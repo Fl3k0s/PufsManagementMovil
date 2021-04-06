@@ -3,7 +3,7 @@ package com.indytek.pufsmanagement.identificacion;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.example.proyectoeprobador.R;
+import com.indytek.pufsmanagement.R;
 
 public class SesionManager{
     Context context;
@@ -21,7 +21,7 @@ public class SesionManager{
         editor.putString(userToken,token);
         editor.apply();
     }
-
+//prueba
     public String fetchAuthToken(){
         return prefs.getString(userToken, null);
     }
