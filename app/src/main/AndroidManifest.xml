@@ -9,11 +9,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PufsManagement">
-        <activity android:name=".Pedidos"></activity>
-        <activity android:name=".Carrito" />
-        <activity android:name=".Perfil" />
+        <activity android:name=".BotonesActivity"
+            android:theme="@style/Theme.PufsManagement.NoActionBar"></activity>
+        <activity android:name=".Pedidos"
+            android:theme="@style/Theme.PufsManagement.NoActionBar"></activity>
+        <activity android:name=".Carrito"
+            android:theme="@style/Theme.PufsManagement.NoActionBar"></activity>
+        <activity android:name=".Perfil"
+            android:theme="@style/Theme.PufsManagement.NoActionBar"></activity>
+        <activity android:name=".MainActivity"
+            android:theme="@style/Theme.PufsManagement.NoActionBar"></activity>
+        <activity android:name=".Registro"
+            android:theme="@style/Theme.PufsManagement.NoActionBar"></activity>
+        <activity android:name=".Productos"
+            android:theme="@style/Theme.PufsManagement.NoActionBar"></activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".LogIn"
             android:label="@string/app_name"
             android:theme="@style/Theme.PufsManagement.NoActionBar">
             <intent-filter>

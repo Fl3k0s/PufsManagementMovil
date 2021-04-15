@@ -21,7 +21,6 @@ public class SesionManager{
         editor.putString(userToken,token);
         editor.apply();
     }
-//prueba
     public String fetchAuthToken(){
         return prefs.getString(userToken, null);
     }

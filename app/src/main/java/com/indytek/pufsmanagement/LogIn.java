@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 
 import com.indytek.pufsmanagement.identificacion.PollClient;
@@ -24,6 +25,8 @@ public class LogIn extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_in);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
         final Intent intAbrirMain = new Intent(LogIn.this, MainActivity.class);
         final Intent intAbrirRegistro = new Intent(LogIn.this, Registro.class);

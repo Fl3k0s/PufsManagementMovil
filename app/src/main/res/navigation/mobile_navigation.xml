@@ -11,15 +11,16 @@
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home" />
 
-    <fragment
+    <activity
         android:id="@+id/nav_pedidos"
-        android:name="com.indytek.pufsmanagement.ui.gallery.GalleryFragment"
+        android:name="com.indytek.pufsmanagement.Pedidos"
         android:label="@string/menu_gallery"
         tools:layout="@layout/fragment_gallery" />
 
-    <fragment
-        android:id="@+id/nav_sobreNosotros"
-        android:name="com.indytek.pufsmanagement.ui.slideshow.SlideshowFragment"
+    <activity
+        android:id="@+id/nav_carrito"
+        android:name="com.indytek.pufsmanagement.Carrito"
         android:label="@string/menu_slideshow"
         tools:layout="@layout/fragment_slideshow" />
+
 </navigation>
