@@ -9,6 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PufsManagement">
+        <activity android:name=".Pedidos"></activity>
+        <activity android:name=".Carrito" />
+        <activity android:name=".Perfil" />
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"

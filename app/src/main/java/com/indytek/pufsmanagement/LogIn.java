@@ -28,8 +28,8 @@ public class LogIn extends AppCompatActivity {
         final Intent intAbrirMain = new Intent(LogIn.this, MainActivity.class);
         final Intent intAbrirRegistro = new Intent(LogIn.this, Registro.class);
 
-        user = findViewById(R.id.editTextUser);
-        pass = findViewById(R.id.editTextPass);
+        user = findViewById(R.id.editTextPayMethod);
+        pass = findViewById(R.id.editChange);
 
         apiClient = new PollClient();
         //esto es para el token pero si no carga la api no funciona
