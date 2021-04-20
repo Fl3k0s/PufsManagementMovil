@@ -15,29 +15,31 @@ import com.indytek.pufsmanagement.objects.Producto;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Adaptador extends RecyclerView.Adapter<Adaptador.ViewHolder> {
+public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHolder> {
 
     private List<Producto> mProductos;
     private LayoutInflater mInflater;
     private ItemClickListener mClickListener;
 
     // data is passed into the constructor
-    Adaptador(Context context) {
+    public ProductsAdapter(Context context) {
         this.mInflater = LayoutInflater.from(context);
-        //mData = new ArrayList<String>();
+        mProductos = new ArrayList<>();
     }
 
     // inflates the row layout from xml when needed
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = mInflater.inflate(R.layout.adaptador_activity, parent, false);
+        View view = mInflater.inflate(R.layout.products_adapter_activity, parent, false);
         return new ViewHolder(view);
     }
 
     // binds the data to the TextView in each row
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        
+        Producto prod = mProductos.get(position);
+        holder.productos.setImageResource(R.drawable.mixto);
+        holder.txtProductos.setText(prod.getNombre());
         //holder.tvInfo.setText(info);
     }
 
@@ -47,24 +49,22 @@ public class Adaptador extends RecyclerView.Adapter<Adaptador.ViewHolder> {
         return mProductos.size();
     }
 
-    public void addData(ArrayList<String> info, ArrayList<ImageButton>buttons) {
-
+    public void addData(ArrayList<Producto> info) {
+        mProductos.addAll(info);
         notifyDataSetChanged();
     }
 
 
     // stores and recycles views as they are scrolled off screen
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        ImageButton[] productos = new ImageButton[2];
-        TextView[] txtProductos = new TextView[2];
+        ImageButton productos;
+        TextView txtProductos;
 
 
         ViewHolder(View itemView) {
             super(itemView);
-            productos[0] = itemView.findViewById(R.id.prod1);
-            productos[1] = itemView.findViewById(R.id.prod2);
-            txtProductos[0] = itemView.findViewById(R.id.txtProd1);
-            txtProductos[1] = itemView.findViewById(R.id.txtProd2);
+            productos = itemView.findViewById(R.id.imgProd);
+            txtProductos = itemView.findViewById(R.id.txtProd);
             itemView.setOnClickListener(this);
         }
 
