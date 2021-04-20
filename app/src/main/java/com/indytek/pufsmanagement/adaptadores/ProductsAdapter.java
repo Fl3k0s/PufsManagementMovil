@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.indytek.pufsmanagement.Productos;
 import com.indytek.pufsmanagement.R;
 import com.indytek.pufsmanagement.objects.Producto;
 
@@ -38,10 +40,20 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHo
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         Producto prod = mProductos.get(position);
-        holder.productos.setImageResource(R.drawable.mixto);
+
+        //establecemos el tamaño maximo de la imagen
+        holder.productos.setMaxHeight(120);
+        holder.productos.setMaxWidth(120);
+
+        //con esto lo que hacemos es poner en el ImageButton la ruta de la foto en internet
+        Glide.with(holder.productos.getContext()).load(prod.getImagen()).into(holder.productos);
+
+        //le ponemos el nombre del producto que corresponda
         holder.txtProductos.setText(prod.getNombre());
-        //holder.tvInfo.setText(info);
     }
+
+
+
 
     // total number of rows
     @Override
