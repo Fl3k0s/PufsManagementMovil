@@ -2,9 +2,26 @@ package com.indytek.pufsmanagement.objects;
 
 import com.google.gson.annotations.SerializedName;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+
+@Builder
+@Data
+@ToString
+@NoArgsConstructor
+@AllArgsConstructor
 public class Producto {
+    private static int count = 0;
+
+    @EqualsAndHashCode.Include
+    private int id;
     @SerializedName("nombre")
     private String nombre;
+    //la imagen es una url para su busqueda
     @SerializedName("imagen")
     private String imagen;
     @SerializedName("precio")
@@ -18,37 +35,6 @@ public class Producto {
         this.nombre = nombre;
         this.imagen = imagen;
         this.precio = precio;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getImagen() {
-        return imagen;
-    }
-
-    public void setImagen(String imagen) {
-        this.imagen = imagen;
-    }
-
-    public float getPrecio() {
-        return precio;
-    }
-
-    public void setPrecio(float precio) {
-        this.precio = precio;
-    }
-
-    @Override
-    public String toString() {
-        return "Producto{" +
-                "nombre='" + nombre + '\'' +
-                ", precio=" + precio +
-                '}';
+        id = count++;
     }
 }
