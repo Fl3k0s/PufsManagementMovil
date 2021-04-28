@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-
+/*
+Actividad del carrito de compra
+ */
 public class Carrito extends AppCompatActivity {
 
     Button cancel;

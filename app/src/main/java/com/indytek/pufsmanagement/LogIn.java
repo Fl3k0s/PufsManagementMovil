@@ -16,7 +16,9 @@ import com.indytek.pufsmanagement.identificacion.SesionManager;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-
+/*
+Clase del login
+ */
 public class LogIn extends AppCompatActivity {
     PollClient apiClient;
     SesionManager sesion;
@@ -56,6 +58,7 @@ public class LogIn extends AppCompatActivity {
 
     private void apiClientLoginRequest(final Intent intAbrirMain) {
         //hace llamada a una api, para hacer las pruebas está comentado aposta
+        //magia negra
         /*apiClient.getLogin(new LoginRequest(user.getText().toString(),pass.getText().toString()))
         .observe(this, new Observer<LoginResponse>() {
             @Override

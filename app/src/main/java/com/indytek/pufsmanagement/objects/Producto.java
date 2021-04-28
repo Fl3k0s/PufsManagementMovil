@@ -26,15 +26,7 @@ public class Producto {
     private String imagen;
     @SerializedName("precio")
     private float precio;
+    @SerializedName("rango")
+    private Rango rango;
 
-    public Producto() {
-
-    }
-
-    public Producto(String nombre, String imagen, float precio) {
-        this.nombre = nombre;
-        this.imagen = imagen;
-        this.precio = precio;
-        id = count++;
-    }
 }

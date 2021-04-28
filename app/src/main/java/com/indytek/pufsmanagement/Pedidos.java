@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
-
+/*
+Actividad de la lista de pedidos
+ */
 public class Pedidos extends AppCompatActivity {
 
 
