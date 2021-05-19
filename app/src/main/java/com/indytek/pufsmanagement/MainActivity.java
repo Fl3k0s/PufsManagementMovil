@@ -44,7 +44,34 @@ public class MainActivity extends AppCompatActivity {
 
 
         Intent botones = new Intent(getApplicationContext(),BotonesActivity.class);
+        Intent productos = new Intent(getApplicationContext(), Productos.class);
         Button b = (Button)findViewById(R.id.toBotones);
+
+        findViewById(R.id.hambuguesas).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(productos);
+            }
+        });
+        findViewById(R.id.perritos).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(productos);
+            }
+        });
+        findViewById(R.id.raciones).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(productos);
+            }
+        });
+        findViewById(R.id.bebida).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(productos);
+            }
+        });
+
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

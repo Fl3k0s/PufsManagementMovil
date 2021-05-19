@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -14,8 +15,12 @@ import com.indytek.pufsmanagement.R;
 import com.indytek.pufsmanagement.objects.Pedido;
 import com.indytek.pufsmanagement.objects.Producto;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+
+import lombok.var;
+
 /*
 Adaptador del listado de pedidos
  */
@@ -34,7 +39,7 @@ public class PedidosAdapter extends RecyclerView.Adapter<PedidosAdapter.ViewHold
     // inflates the row layout from xml when needed
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = mInflater.inflate(R.layout.products_adapter_activity, parent, false);
+        View view = mInflater.inflate(R.layout.pedidos_adapter, parent, false);
         return new ViewHolder(view);
     }
 
@@ -42,16 +47,22 @@ public class PedidosAdapter extends RecyclerView.Adapter<PedidosAdapter.ViewHold
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         Pedido prod = mPedidos.get(position);
+        // declaramos la lista de productos
+        var lista = "";
+        for (Producto p: prod.getProducts())
+            lista += p.getNombre() + ", ";
+
+        // quitamos los ultimos caracteres que tienen para dejarlo bien
+        lista = lista.substring(0, lista.length()-2) + ".";
 
         //establecemos el tamaño maximo de la imagen
-        holder.productos.setMaxHeight(120);
-        holder.productos.setMaxWidth(120);
-
-        //con esto lo que hacemos es poner en el ImageButton la ruta de la foto en internet
-        //Glide.with(holder.productos.getContext()).load(prod.getImagen()).into(holder.productos);
-
-        //le ponemos el nombre del producto que corresponda
-        //holder.txtProductos.setText(prod.getNombre());
+        holder.price.setText(prod.getPrecio() + "");
+        holder.dateOrderer.setText( prod.getDateOrdered().getDayOfMonth() + "-" + prod.getDateOrdered().getMonthValue() + "-"  + prod.getDateOrdered().getYear());
+        holder.listProducts.setText(lista);
+        holder.anotherTime.setVisibility(View.VISIBLE);
+        if (prod.getDateOrdered().isBefore(LocalDateTime.now().plusMinutes(10)))
+            holder.cancel.setVisibility(View.INVISIBLE);
+        else holder.cancel.setVisibility(View.VISIBLE);
     }
 
 
@@ -71,14 +82,17 @@ public class PedidosAdapter extends RecyclerView.Adapter<PedidosAdapter.ViewHold
 
     // stores and recycles views as they are scrolled off screen
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        ImageButton productos;
-        TextView txtProductos;
+        Button cancel, anotherTime;
+        TextView listProducts, price, dateOrderer;
 
 
         ViewHolder(View itemView) {
             super(itemView);
-            productos = itemView.findViewById(R.id.imgProd);
-            txtProductos = itemView.findViewById(R.id.txtProd);
+            cancel = itemView.findViewById(R.id.cancel);
+            anotherTime = itemView.findViewById(R.id.pedirDeNuevo);
+            listProducts = itemView.findViewById(R.id.listProducts);
+            dateOrderer = itemView.findViewById(R.id.dateOrderer);
+            price = itemView.findViewById(R.id.precio);
             itemView.setOnClickListener(this);
         }
 

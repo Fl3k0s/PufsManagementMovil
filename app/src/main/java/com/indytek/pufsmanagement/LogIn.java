@@ -65,17 +65,17 @@ public class LogIn extends AppCompatActivity {
     private void apiClientLoginRequest(Intent intAbrirMain) {
         //hace llamada a una api, para hacer las pruebas está comentado aposta
         //magia negra
-        apiClient.getLogin(new LoginRequest(user.getText().toString(),pass.getText().toString()))
+        /*apiClient.getLogin(new LoginRequest(user.getText().toString(),pass.getText().toString()))
         .observe(this, new Observer<Usuario>() {
             @Override
             public void onChanged(Usuario usuario) {
                 startActivity(intAbrirMain);
             }
-        });
+        });*/
         //para hacer la prueba sin la api
-        /*if(user.getText().toString().equals("admin")&&
+        if(user.getText().toString().equals("admin")&&
                 pass.getText().toString().equals("admin"))
-        startActivity(intAbrirMain);*/
+        startActivity(intAbrirMain);
     }
 
     public void fetchPosts(){
