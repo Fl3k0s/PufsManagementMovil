@@ -7,11 +7,17 @@ import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.lifecycle.Observer;
 
 
+import com.indytek.pufsmanagement.identificacion.LoginRequest;
+import com.indytek.pufsmanagement.identificacion.LoginResponse;
 import com.indytek.pufsmanagement.identificacion.PollClient;
 import com.indytek.pufsmanagement.identificacion.PostResponse;
 import com.indytek.pufsmanagement.identificacion.SesionManager;
+import com.indytek.pufsmanagement.objects.Usuario;
+
+import java.util.Observable;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -56,23 +62,20 @@ public class LogIn extends AppCompatActivity {
         });
     }
 
-    private void apiClientLoginRequest(final Intent intAbrirMain) {
+    private void apiClientLoginRequest(Intent intAbrirMain) {
         //hace llamada a una api, para hacer las pruebas está comentado aposta
         //magia negra
-        /*apiClient.getLogin(new LoginRequest(user.getText().toString(),pass.getText().toString()))
-        .observe(this, new Observer<LoginResponse>() {
+        apiClient.getLogin(new LoginRequest(user.getText().toString(),pass.getText().toString()))
+        .observe(this, new Observer<Usuario>() {
             @Override
-            public void onChanged(LoginResponse loginResponse) {
-                if (loginResponse.getStatusCode()!= 200){
-                    sesion.saveAuthToken(loginResponse.getAuthToken());
-                    startActivity(intAbrirMain);
-                }
+            public void onChanged(Usuario usuario) {
+                startActivity(intAbrirMain);
             }
-        });*/
+        });
         //para hacer la prueba sin la api
-        if(user.getText().toString().equals("admin")&&
+        /*if(user.getText().toString().equals("admin")&&
                 pass.getText().toString().equals("admin"))
-        startActivity(intAbrirMain);
+        startActivity(intAbrirMain);*/
     }
 
     public void fetchPosts(){

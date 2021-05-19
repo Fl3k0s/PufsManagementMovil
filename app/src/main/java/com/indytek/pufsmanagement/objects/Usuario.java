@@ -19,7 +19,7 @@ import java.util.Set;
 /*
 Clase de usuario
  */
-public class Usuario implements Serializable {
+public class Usuario{
 
     @NonNull
     @EqualsAndHashCode.Include

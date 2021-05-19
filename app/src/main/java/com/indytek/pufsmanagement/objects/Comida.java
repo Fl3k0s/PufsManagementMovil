@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 import lombok.experimental.SuperBuilder;
 
-@SuperBuilder
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

@@ -1,5 +1,7 @@
 package com.indytek.pufsmanagement.identificacion;
 
+import com.indytek.pufsmanagement.objects.Usuario;
+
 public class LoginResponse {
     private int statusCode;
 
