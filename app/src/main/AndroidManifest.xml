@@ -3,28 +3,37 @@
     package="com.indytek.pufsmanagement">
 
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
-        android:usesCleartextTraffic="true"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.PufsManagement">
-        <activity android:name=".BotonesActivity"
-            android:theme="@style/Theme.PufsManagement.NoActionBar"></activity>
-        <activity android:name=".Pedidos"
-            android:theme="@style/Theme.PufsManagement.NoActionBar"></activity>
-        <activity android:name=".Carrito"
-            android:theme="@style/Theme.PufsManagement.NoActionBar"></activity>
-        <activity android:name=".Perfil"
-            android:theme="@style/Theme.PufsManagement.NoActionBar"></activity>
-        <activity android:name=".LogIn"
-            android:theme="@style/Theme.PufsManagement.NoActionBar"></activity>
-        <activity android:name=".Registro"
-            android:theme="@style/Theme.PufsManagement.NoActionBar"></activity>
-        <activity android:name=".Productos"
-            android:theme="@style/Theme.PufsManagement.NoActionBar"></activity>
+        android:theme="@style/Theme.PufsManagement"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".PagoActivity"></activity>
+        <activity
+            android:name=".BotonesActivity"
+            android:theme="@style/Theme.PufsManagement.NoActionBar" />
+        <activity
+            android:name=".Pedidos"
+            android:theme="@style/Theme.PufsManagement.NoActionBar" />
+        <activity
+            android:name=".Carrito"
+            android:theme="@style/Theme.PufsManagement.NoActionBar" />
+        <activity
+            android:name=".Perfil"
+            android:theme="@style/Theme.PufsManagement.NoActionBar" />
+        <activity
+            android:name=".LogIn"
+            android:theme="@style/Theme.PufsManagement.NoActionBar" />
+        <activity
+            android:name=".Registro"
+            android:theme="@style/Theme.PufsManagement.NoActionBar" />
+        <activity
+            android:name=".Productos"
+            android:theme="@style/Theme.PufsManagement.NoActionBar" />
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"

@@ -56,11 +56,11 @@ public class PedidosAdapter extends RecyclerView.Adapter<PedidosAdapter.ViewHold
         lista = lista.substring(0, lista.length()-2) + ".";
 
         //establecemos el tamaño maximo de la imagen
-        holder.price.setText(prod.getPrecio() + "");
+        holder.price.setText(prod.getPrecio() + "€");
         holder.dateOrderer.setText( prod.getDateOrdered().getDayOfMonth() + "-" + prod.getDateOrdered().getMonthValue() + "-"  + prod.getDateOrdered().getYear());
         holder.listProducts.setText(lista);
         holder.anotherTime.setVisibility(View.VISIBLE);
-        if (prod.getDateOrdered().isBefore(LocalDateTime.now().plusMinutes(10)))
+        if (prod.getDateOrdered().isBefore(LocalDateTime.now().minusMinutes(10)))
             holder.cancel.setVisibility(View.INVISIBLE);
         else holder.cancel.setVisibility(View.VISIBLE);
     }
