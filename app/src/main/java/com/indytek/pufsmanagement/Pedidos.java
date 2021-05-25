@@ -44,13 +44,7 @@ public class Pedidos extends AppCompatActivity {
             }
         });
 
-        ImageButton btn = findViewById(R.id.imgProd);
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-            }
-        });
     }
 
     public void cargarPedidos(){

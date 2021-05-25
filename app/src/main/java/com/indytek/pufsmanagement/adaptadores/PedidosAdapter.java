@@ -1,6 +1,7 @@
 package com.indytek.pufsmanagement.adaptadores;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,8 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.indytek.pufsmanagement.Carrito;
+import com.indytek.pufsmanagement.MainActivity;
 import com.indytek.pufsmanagement.R;
 import com.indytek.pufsmanagement.objects.Pedido;
 import com.indytek.pufsmanagement.objects.Producto;
@@ -46,23 +49,25 @@ public class PedidosAdapter extends RecyclerView.Adapter<PedidosAdapter.ViewHold
     // binds the data to the TextView in each row
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        Pedido prod = mPedidos.get(position);
+        Pedido ped = mPedidos.get(position);
         // declaramos la lista de productos
         var lista = "";
-        for (Producto p: prod.getProducts())
+        for (Producto p: ped.getProducts())
             lista += p.getNombre() + ", ";
 
         // quitamos los ultimos caracteres que tienen para dejarlo bien
         lista = lista.substring(0, lista.length()-2) + ".";
 
         //establecemos el tamaño maximo de la imagen
-        holder.price.setText(prod.getPrecio() + "€");
-        holder.dateOrderer.setText( prod.getDateOrdered().getDayOfMonth() + "-" + prod.getDateOrdered().getMonthValue() + "-"  + prod.getDateOrdered().getYear());
+        holder.price.setText(ped.getPrecio() + "€");
+        holder.dateOrderer.setText( ped.getDateOrdered().getDayOfMonth() + "-" + ped.getDateOrdered().getMonthValue() + "-"  + ped.getDateOrdered().getYear());
         holder.listProducts.setText(lista);
         holder.anotherTime.setVisibility(View.VISIBLE);
-        if (prod.getDateOrdered().isBefore(LocalDateTime.now().minusMinutes(2)))
+        if (ped.getDateOrdered().isBefore(LocalDateTime.now().minusMinutes(2)))
             holder.cancel.setVisibility(View.INVISIBLE);
         else holder.cancel.setVisibility(View.VISIBLE);
+        holder.p = ped;
+        holder.setOnClickListener();
     }
 
 
@@ -84,10 +89,12 @@ public class PedidosAdapter extends RecyclerView.Adapter<PedidosAdapter.ViewHold
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         Button cancel, anotherTime;
         TextView listProducts, price, dateOrderer;
-
+        Context context;
+        Pedido p;
 
         ViewHolder(View itemView) {
             super(itemView);
+            context = itemView.getContext();
             cancel = itemView.findViewById(R.id.cancel);
             anotherTime = itemView.findViewById(R.id.pedirDeNuevo);
             listProducts = itemView.findViewById(R.id.listProducts);
@@ -96,8 +103,27 @@ public class PedidosAdapter extends RecyclerView.Adapter<PedidosAdapter.ViewHold
             itemView.setOnClickListener(this);
         }
 
+        void setOnClickListener(){
+            cancel.setOnClickListener(this);
+            anotherTime.setOnClickListener(this);
+        }
+
         @Override
         public void onClick(View view) {
+            switch (view.getId()){
+                case R.id.cancel:
+                    Intent intent = new Intent(context, MainActivity.class);
+
+                    context.startActivity(intent);
+                    break;
+                case R.id.pedirDeNuevo:
+                    Intent intentCarrito = new Intent(context, Carrito.class);
+                    Carrito.productos.clear();
+                    Carrito.productos.addAll(p.getProducts());
+                    context.startActivity(intentCarrito);
+                    break;
+            }
+
             if (mClickListener != null) mClickListener.onItemClick(view, getAdapterPosition());
         }
     }

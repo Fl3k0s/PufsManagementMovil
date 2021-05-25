@@ -10,7 +10,7 @@
         android:id="@+id/priceImg"
         android:layout_width="50dp"
         android:layout_height="75dp"
-        android:layout_marginEnd="44dp"
+        android:layout_marginEnd="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/buttonPagarCarrito"
         app:layout_constraintTop_toTopOf="parent"
@@ -43,8 +43,8 @@
 
     <TextView
         android:id="@+id/textPrecioCarrito"
-        android:layout_width="50dp"
-        android:layout_height="75dp"
+        android:layout_width="116dp"
+        android:layout_height="72dp"
         android:fontFamily="sans-serif-condensed"
         android:gravity="center"
         android:text="0"
