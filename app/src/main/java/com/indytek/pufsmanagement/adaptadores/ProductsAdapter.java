@@ -1,6 +1,7 @@
 package com.indytek.pufsmanagement.adaptadores;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,12 +11,17 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.indytek.pufsmanagement.Carrito;
+import com.indytek.pufsmanagement.Pedidos;
 import com.indytek.pufsmanagement.Productos;
 import com.indytek.pufsmanagement.R;
 import com.indytek.pufsmanagement.objects.Producto;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
+
+import lombok.var;
 
 public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHolder> {
 
@@ -50,7 +56,10 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHo
 
         //le ponemos el nombre del producto que corresponda
         holder.txtProductos.setText(prod.getNombre());
+        holder.p = prod;
+        holder.setOnClickListeners();
     }
+
 
 
 
@@ -71,17 +80,24 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHo
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         ImageButton productos;
         TextView txtProductos;
-
-
+        Context context;
+        Producto p;
         ViewHolder(View itemView) {
             super(itemView);
+            context = itemView.getContext();
             productos = itemView.findViewById(R.id.imgProd);
             txtProductos = itemView.findViewById(R.id.txtProd);
-            itemView.setOnClickListener(this);
+        }
+
+        void setOnClickListeners(){
+            productos.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View view) {
+            Intent intentCarrito = new Intent(context, Carrito.class);
+            Carrito.productos.add(p);
+            context.startActivity(intentCarrito);
             if (mClickListener != null) mClickListener.onItemClick(view, getAdapterPosition());
         }
     }
