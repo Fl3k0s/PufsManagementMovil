@@ -1,6 +1,10 @@
 package com.indytek.pufsmanagement.identificacion;
 
+import com.indytek.pufsmanagement.objects.Pedido;
+import com.indytek.pufsmanagement.objects.Producto;
 import com.indytek.pufsmanagement.objects.Usuario;
+
+import java.util.ArrayList;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -23,6 +27,9 @@ public interface PollService {
 
     @POST(Urls.URLTOKEN)
     public Call<PostResponse> fetchPost(@Header("Authorization")String token);
+
+    @GET
+    public Call<Pedido[]> pedidos(@Header("Username")String username, @Body ArrayList<Producto> productos);
 
 }
 

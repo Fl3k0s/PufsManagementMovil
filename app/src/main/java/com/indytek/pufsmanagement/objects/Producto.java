@@ -1,5 +1,6 @@
 package com.indytek.pufsmanagement.objects;
 
+import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 
 import lombok.AllArgsConstructor;
@@ -26,6 +27,8 @@ public class Producto {
     private String imagen;
     @SerializedName("precio")
     private float precio;
+    @SerializedName("tipo")
+    private Tipo tipo;
     @SerializedName("rango")
     private Rango rango;
 

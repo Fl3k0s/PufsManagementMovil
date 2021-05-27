@@ -15,6 +15,7 @@ import com.indytek.pufsmanagement.Carrito;
 import com.indytek.pufsmanagement.Pedidos;
 import com.indytek.pufsmanagement.Productos;
 import com.indytek.pufsmanagement.R;
+import com.indytek.pufsmanagement.VistaPreviaActivity;
 import com.indytek.pufsmanagement.objects.Producto;
 
 import java.util.ArrayList;
@@ -95,9 +96,9 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHo
 
         @Override
         public void onClick(View view) {
-            Intent intentCarrito = new Intent(context, Carrito.class);
-            Carrito.productos.add(p);
-            context.startActivity(intentCarrito);
+            Intent intentVistaPrevia = new Intent(context, VistaPreviaActivity.class);
+            VistaPreviaActivity.producto = p;
+            context.startActivity(intentVistaPrevia);
             if (mClickListener != null) mClickListener.onItemClick(view, getAdapterPosition());
         }
     }

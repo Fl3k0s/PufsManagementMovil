@@ -45,7 +45,7 @@ public class Carrito extends AppCompatActivity {
         else{
             txt.setText("");
             cargarCarrito();
-            float preciof = productos.stream().map(Producto::getPrecio)
+            var preciof = productos.stream().map(Producto::getPrecio)
                     .reduce((a,b)-> a + b).orElse(0f);
             precio.setText(preciof + "");
         }
@@ -54,6 +54,7 @@ public class Carrito extends AppCompatActivity {
 
         more = findViewById(R.id.buttonAddCarrito);
         final Intent i = new Intent(Carrito.this, MainActivity.class);
+        final Intent finishIOrder = new Intent(Carrito.this, PagoActivity.class);
         more.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,6 +67,13 @@ public class Carrito extends AppCompatActivity {
             public void onClick(View v) {
                 productos.clear();
                 startActivity(i);
+            }
+        });
+
+        findViewById(R.id.buttonPagarCarrito).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(finishIOrder);
             }
         });
     }

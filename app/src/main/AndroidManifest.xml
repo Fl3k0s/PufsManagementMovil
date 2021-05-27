@@ -12,7 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PufsManagement"
         android:usesCleartextTraffic="true">
-        <activity android:name=".PagoActivity"></activity>
+        <activity android:name=".VistaPreviaActivity"></activity>
+        <activity android:name=".PagoActivity" />
         <activity
             android:name=".BotonesActivity"
             android:theme="@style/Theme.PufsManagement.NoActionBar" />
