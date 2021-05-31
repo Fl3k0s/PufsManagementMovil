@@ -18,7 +18,7 @@ public class Registro extends AppCompatActivity {
         findViewById(R.id.buttonRegistrerOk).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+
             }
         });
 

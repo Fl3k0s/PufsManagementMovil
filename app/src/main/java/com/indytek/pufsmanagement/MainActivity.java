@@ -43,31 +43,47 @@ public class MainActivity extends AppCompatActivity {
         //fin del codigo autogenerado
 
 
+
         Intent botones = new Intent(getApplicationContext(),BotonesActivity.class);
         Intent productos = new Intent(getApplicationContext(), Productos.class);
+        Intent perfil = new Intent(getApplicationContext(), Perfil.class);
+
+        ImageButton perfilBtn = navigationView.getHeaderView(0).findViewById(R.id.profilePhoto);
+
+        perfilBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(perfil);
+            }
+        });
+
         Button b = (Button)findViewById(R.id.toBotones);
 
         findViewById(R.id.hambuguesas).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                productos.putExtra("tipo","hamburguesas");
                 startActivity(productos);
             }
         });
         findViewById(R.id.perritos).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                productos.putExtra("tipo","perritos");
                 startActivity(productos);
             }
         });
         findViewById(R.id.raciones).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                productos.putExtra("tipo","raciones");
                 startActivity(productos);
             }
         });
         findViewById(R.id.bebida).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                productos.putExtra("tipo","bebida");
                 startActivity(productos);
             }
         });
@@ -79,6 +95,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(botones);
             }
         });
+
     }
 
     @Override

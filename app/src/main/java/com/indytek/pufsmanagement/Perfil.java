@@ -4,10 +4,16 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+
+import com.indytek.pufsmanagement.objects.Usuario;
+
 /*
 Actividad del perfil del usuario
  */
 public class Perfil extends AppCompatActivity {
+
+
+    public static Usuario usuario = new Usuario();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

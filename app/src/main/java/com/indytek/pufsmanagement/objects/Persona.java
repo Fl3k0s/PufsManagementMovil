@@ -39,9 +39,6 @@ public class Persona implements Serializable {
 	@SerializedName("email")
 	private String email;
 
-	//relaccion one to many con usuarios, una persona puede tener mas de un usuario
-	@Singular
-	@SerializedName("usuarios")
-	private Set<Usuario> usuarios;
+
 	
 }
