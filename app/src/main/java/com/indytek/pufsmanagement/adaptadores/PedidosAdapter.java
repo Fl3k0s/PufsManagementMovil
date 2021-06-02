@@ -79,7 +79,7 @@ public class PedidosAdapter extends RecyclerView.Adapter<PedidosAdapter.ViewHold
         return mPedidos.size();
     }
 
-    public void addData(ArrayList<Pedido> info) {
+    public void addData(List<Pedido> info) {
         mPedidos.addAll(info);
         notifyDataSetChanged();
     }

@@ -20,13 +20,17 @@ public class Producto {
 
     @EqualsAndHashCode.Include
     private int id;
-    @SerializedName("nombre")
+    @SerializedName("name")
     private String nombre;
     //la imagen es una url para su busqueda
-    @SerializedName("imagen")
+    @SerializedName("url_product")
     private String imagen;
-    @SerializedName("precio")
+    @SerializedName("pc")
     private float precio;
+    @SerializedName("pvp")
+    private float pvp;
+    @SerializedName("stock")
+    private int stock;
     @SerializedName("tipo")
     private Tipo tipo;
     @SerializedName("rango")

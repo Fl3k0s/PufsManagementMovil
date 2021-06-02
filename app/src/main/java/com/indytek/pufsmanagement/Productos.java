@@ -1,6 +1,7 @@
 package com.indytek.pufsmanagement;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -9,43 +10,83 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.indytek.pufsmanagement.adaptadores.ProductsAdapter;
+import com.indytek.pufsmanagement.identificacion.PollClient;
+import com.indytek.pufsmanagement.identificacion.SesionManager;
+import com.indytek.pufsmanagement.objects.Cliente;
 import com.indytek.pufsmanagement.objects.Producto;
 import com.indytek.pufsmanagement.objects.Rango;
 import com.indytek.pufsmanagement.objects.Tipo;
+import com.indytek.pufsmanagement.objects.Usuario;
 
 import java.util.ArrayList;
+import java.util.List;
+
 /*
 Actividad que muestra los productos
  */
 public class Productos extends AppCompatActivity {
 
     ProductsAdapter adaptador;
+    PollClient apiClient;
+    SesionManager sesion;
+    List<Producto> productoList;
+    Tipo type;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_productos);
+        String tipo =getIntent().getStringExtra("tipo");
+        apiClient = new PollClient();
+
+        type= segunTipo(tipo);
+
+
         RecyclerView recyclerView = findViewById(R.id.rview);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
         adaptador = new ProductsAdapter(this);
         recyclerView.setAdapter(adaptador);
-        cargarProductos();
-        findViewById(R.id.moreProducts).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                cargarProductos();
-            }
-        });
 
+
+        cargarProductosApi();
+
+    }
+
+    public void cargarProductosApi(){
+        apiClient.getProductos(type, Perfil.usuario.getRango())
+                .observe(this, new Observer<List<Producto>>() {
+                    @Override
+                    public void onChanged(List<Producto> productos) {
+                        adaptador.addData(productos);
+                    }
+                });
+
+
+    }
+
+    public Tipo segunTipo(String tipo){
+        Tipo t = Tipo.HAMBURGUESA;
+
+        switch (tipo){
+            case "hambuguesa":
+                t = Tipo.HAMBURGUESA;
+                break;
+            case "perritos":
+                t = Tipo.ENTRANTE;
+                break;
+            case "raciones":
+                t = Tipo.PATATAS;
+                break;
+            case "bebida":
+                t = Tipo.BEBIDA;
+                break;
+        }
+
+        return t;
     }
 
 
     public void cargarProductos(){
-        ArrayList<Producto> productos = new ArrayList<>();
-        productos.add(new Producto(1,"prod","https://cdn.computerhoy.com/sites/navi.axelspringer.es/public/media/image/2020/08/hamburguesa-2028707.jpg",12, Tipo.HAMBURGUESA ,Rango.ORO));
-        productos.add(new Producto(2,"prod","https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/hamburguesa-1590595900.jpg",12,Tipo.HAMBURGUESA,Rango.ORO));
-        productos.add(new Producto(3,"prod","https://sevilla.abc.es/gurme/wp-content/uploads/sites/24/2014/10/hamburguesas-960x540.jpg",12,Tipo.HAMBURGUESA,Rango.ORO));
-        productos.add(new Producto(4,"prod","https://media.revistagq.com/photos/5f08621564f52a842c7f9a83/master/pass/hamburguesa%20the%20fitzgerald.jpg",12,Tipo.HAMBURGUESA,Rango.ORO));
-        adaptador.addData(productos);
+
     }
 
 

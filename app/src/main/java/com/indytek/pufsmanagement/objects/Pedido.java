@@ -5,6 +5,7 @@ import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Set;
 
 import lombok.AllArgsConstructor;
@@ -33,19 +34,28 @@ public class Pedido implements Serializable {
 
 	@SerializedName ("dateOrdered")
 	private LocalDateTime dateOrdered;
-	
-	@SerializedName("dateReceived")
-	private LocalDateTime dateReceived;
-	
-	@SerializedName("active")
-	private boolean active;
+
+	@SerializedName("android")
+	private boolean android;
 
 	@SerializedName("precio")
 	private float precio;
+	@SerializedName("pay")
+	private float pay;
+	@SerializedName("exchange")
+	private float exchange;
 
+	@SerializedName("notes")
+	private String notes;
+
+	@SerializedName("pay_method")
+	private MetodoDePago payMethod;
 	//cambiado de productos a integer por que solo es necesario la id para luego mostrar la informacion con consultas
 	@Singular
-	@SerializedName("productos")
-	private Set<Producto> products;
+	@SerializedName("products")
+	private List<Producto> products;
+
+	@SerializedName("username")
+	private String username;
 	
 }

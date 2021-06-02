@@ -23,8 +23,12 @@ import lombok.experimental.SuperBuilder;
 Clase de bebidas (PRODUCTO)
  */
 public class Bebida extends Producto {
-	
-	@SerializedName("unidades")
-	private int uds;
+
+	@SerializedName ("volumen")
+	private float volumen;
+
+	//tamaño en litros de la bebida
+	@SerializedName("tamanio")
+	private float tamanio;
 
 }

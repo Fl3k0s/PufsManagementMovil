@@ -45,6 +45,6 @@ public class Usuario{
     @SerializedName("orders")
     private Set<Pedido> orders;
 
-    @SerializedName("person")
+    @SerializedName("persona")
     private Persona persona;
 }

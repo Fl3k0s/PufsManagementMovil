@@ -11,6 +11,7 @@ import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
@@ -26,18 +27,21 @@ public interface PollService {
     @GET(Urls.PUBSLOGIN)
     public Call<Usuario> pubsLogin(@Query("user") String user, @Query("password") String password);
 
-    @POST("")
+    @POST(Urls.REGISTER)
     @FormUrlEncoded
     public Call<Usuario> pubsRegister(@Body Usuario usuario);
 
     @GET(Urls.PEDIDOSPORUSER)
-    public Call<List<Pedido>> pedidosPorUsuario(@Path("user")String user);
+    public Call<List<Pedido>> pedidosPorUsuario(@Query("user") String user);
 
-    @GET("")
+    @GET(Urls.PRODUCTOSPORTIPOYRANGO)
     public Call<List<Producto>> productosPorTipoYRango(@Body Rango rango, @Body Tipo tipo);
 
     @PUT("")
     public Call<Usuario> actualizarUsuario(@Body Usuario usuario);
+
+    @PUT(Urls.CANCELPEDIDO)
+    public void cancelarPedido(@Query("user")String user, @Query("id") int id);
 
 }
 

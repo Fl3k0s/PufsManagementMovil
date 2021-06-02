@@ -27,7 +27,7 @@
             android:name=".Perfil"
             android:theme="@style/Theme.PufsManagement.NoActionBar" />
         <activity
-            android:name=".LogIn"
+            android:name=".MainActivity"
             android:theme="@style/Theme.PufsManagement.NoActionBar" />
         <activity
             android:name=".Registro"
@@ -36,7 +36,7 @@
             android:name=".Productos"
             android:theme="@style/Theme.PufsManagement.NoActionBar" />
         <activity
-            android:name=".MainActivity"
+            android:name=".LogIn"
             android:label="@string/app_name"
             android:theme="@style/Theme.PufsManagement.NoActionBar">
             <intent-filter>
