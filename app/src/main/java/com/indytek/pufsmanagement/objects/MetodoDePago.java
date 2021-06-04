@@ -3,7 +3,9 @@ package com.indytek.pufsmanagement.objects;
 import com.google.gson.annotations.SerializedName;
 
 public enum MetodoDePago{
-
-    VISA, EFECTIVO//, PAYPAL, BTC
+    @SerializedName(("VISA"))
+    VISA,
+    @SerializedName("EFECTIVO")
+    EFECTIVO//, PAYPAL, BTC
 
 }

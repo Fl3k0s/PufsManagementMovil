@@ -19,6 +19,7 @@ import retrofit2.http.Headers;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
+import retrofit2.http.Part;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
@@ -28,14 +29,16 @@ public interface PollService {
     public Call<Usuario> pubsLogin(@Query("user") String user, @Query("password") String password);
 
     @POST(Urls.REGISTER)
-    @FormUrlEncoded
     public Call<Usuario> pubsRegister(@Body Usuario usuario);
+
+    @POST(Urls.HACERPEDIDO)
+    public Call<Pedido> realizarPedido(@Body Pedido pedido);
 
     @GET(Urls.PEDIDOSPORUSER)
     public Call<List<Pedido>> pedidosPorUsuario(@Query("user") String user);
 
     @GET(Urls.PRODUCTOSPORTIPOYRANGO)
-    public Call<List<Producto>> productosPorTipoYRango(@Body Rango rango, @Body Tipo tipo);
+    public Call<List<Producto>> productosPorTipoYRango(@Query("rango") Rango rango, @Query("tipo") Tipo tipo);
 
     @PUT("")
     public Call<Usuario> actualizarUsuario(@Body Usuario usuario);

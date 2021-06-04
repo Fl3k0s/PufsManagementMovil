@@ -56,6 +56,7 @@ public class Productos extends AppCompatActivity {
                 .observe(this, new Observer<List<Producto>>() {
                     @Override
                     public void onChanged(List<Producto> productos) {
+                        productos.forEach(System.out::println);
                         adaptador.addData(productos);
                     }
                 });
@@ -67,7 +68,7 @@ public class Productos extends AppCompatActivity {
         Tipo t = Tipo.HAMBURGUESA;
 
         switch (tipo){
-            case "hambuguesa":
+            case "hamburguesas":
                 t = Tipo.HAMBURGUESA;
                 break;
             case "perritos":

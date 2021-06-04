@@ -15,6 +15,8 @@ import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
+import com.google.gson.JsonSerializationContext;
+import com.google.gson.JsonSerializer;
 import com.indytek.pufsmanagement.objects.MetodoDePago;
 import com.indytek.pufsmanagement.objects.Pedido;
 import com.indytek.pufsmanagement.objects.Producto;
@@ -48,6 +50,7 @@ public class PollClient {
     private MutableLiveData<List<Producto>> productos;
     private MutableLiveData<List<Pedido>> pedidos;
     private MutableLiveData<Usuario> usuarioModificado;
+    private MutableLiveData<Pedido> nuevoPedido;
 
     public LiveData<Usuario> getLogin(String username, String pass) {
         if (login == null) {
@@ -73,10 +76,18 @@ public class PollClient {
         return register;
     }
 
+    public LiveData<Pedido> getNuevoPedido(Pedido pedido) {
+        if (nuevoPedido == null) {
+            nuevoPedido = new MutableLiveData<Pedido>();
+            newPedido(pedido);
+        }
+        return nuevoPedido;
+    }
+
     public LiveData<List<Producto>> getProductos(Tipo tipo, Rango rango) {
         if (productos == null) {
             productos = new MutableLiveData<List<Producto>>();
-            getProductos(tipo, rango);
+            productosPorTipoYRango(tipo, rango);
         }
         return productos;
     }
@@ -95,6 +106,20 @@ public class PollClient {
             public LocalDateTime deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
                 return LocalDateTime.parse(json.getAsString()); }
 
+        }).registerTypeHierarchyAdapter(Producto[].class, new JsonSerializer<Producto[]>() {
+            @Override
+            public JsonElement serialize(Producto[] src, Type typeOfSrc, JsonSerializationContext context) {
+                JsonArray array = new JsonArray();
+                for (Producto behavior : src) {
+                    JsonObject behaviorJson = new JsonObject();
+                    String className = behavior.getClass().getCanonicalName();
+                    behaviorJson.addProperty("type", "products");
+                    JsonElement elem = context.serialize(behavior);
+                    behaviorJson.add("product", elem);
+                    array.add(behaviorJson);
+                }
+                return array;
+            }
         }).registerTypeAdapter(Producto[].class, new JsonDeserializer<Producto[]>() {
             @Override
             public Producto[] deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
@@ -103,20 +128,21 @@ public class PollClient {
                 Producto[] p = g.fromJson(obj, Producto[].class);
                 return p;
             }
-        }).registerTypeAdapter(MetodoDePago.class, new JsonDeserializer<MetodoDePago>() {
+        }).registerTypeAdapter(MetodoDePago[].class, new JsonDeserializer<MetodoDePago[]>() {
+            @Override
+            public MetodoDePago[] deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
+                JsonArray obj = json.getAsJsonArray();
+                Gson g = new Gson();
+                MetodoDePago[] p = g.fromJson(obj, MetodoDePago[].class);
+                return p;
+            }
+        })
+        .registerTypeAdapter(MetodoDePago.class, new JsonDeserializer<MetodoDePago>() {
             @Override
             public MetodoDePago deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
                 JsonArray obj = json.getAsJsonArray();
                 Gson g = new Gson();
                 MetodoDePago p = g.fromJson(obj, MetodoDePago.class);
-                return p;
-            }
-        }).registerTypeAdapter(Pedido.class, new JsonDeserializer<Pedido>() {
-            @Override
-            public Pedido deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
-                JsonArray obj = json.getAsJsonArray();
-                Gson g = new Gson();
-                Pedido p = g.fromJson(obj, Pedido.class);
                 return p;
             }
         }).registerTypeAdapter(Pedido[].class, new JsonDeserializer<Pedido[]>() {
@@ -208,6 +234,28 @@ public class PollClient {
             @Override
             public void onFailure(Call<List<Producto>> call, Throwable t) {
                 Log.d("Error acceso datos", t.getMessage());
+            }
+        });
+    }
+
+    private void newPedido(Pedido p){
+        PollService service = getApiService();
+        Call<Pedido> pedido = service.realizarPedido(p);
+
+        pedido.enqueue(new Callback<Pedido>() {
+            @Override
+            public void onResponse(Call<Pedido> call, Response<Pedido> response) {
+                if(response.body() != null){
+                    nuevoPedido.setValue(response.body());
+                }else{
+                    System.out.println("is null");
+                    //TODO: Poner Toast con mensaje de bad register
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Pedido> call, Throwable t) {
+
             }
         });
     }

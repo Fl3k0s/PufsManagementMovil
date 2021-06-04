@@ -1,5 +1,8 @@
 package com.indytek.pufsmanagement.objects;
 
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 
@@ -15,6 +18,21 @@ import lombok.ToString;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
+
+@JsonTypeInfo(
+        use = JsonTypeInfo.Id.CLASS,
+        include = JsonTypeInfo.As.PROPERTY,
+        property = "type"
+
+)
+@JsonSubTypes({
+        @JsonSubTypes.Type(value = Comida.class, name = "food"),
+        @JsonSubTypes.Type(value = Bebida.class, name = "drink")
+})
+/*
+Clase padre de producto
+ */
+@JsonTypeName("product")
 public class Producto {
     private static int count = 0;
 

@@ -68,7 +68,6 @@ public class Pedidos extends AppCompatActivity {
 
                     }
                 });
-        listaDePedidos.forEach(System.out::println);
 
     }
 

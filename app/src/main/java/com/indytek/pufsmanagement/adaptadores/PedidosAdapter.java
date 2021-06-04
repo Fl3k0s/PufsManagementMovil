@@ -50,17 +50,19 @@ public class PedidosAdapter extends RecyclerView.Adapter<PedidosAdapter.ViewHold
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         Pedido ped = mPedidos.get(position);
+        System.out.println(ped);
         // declaramos la lista de productos
         var lista = "";
         for (Producto p: ped.getProducts())
             lista += p.getNombre() + ", ";
 
         // quitamos los ultimos caracteres que tienen para dejarlo bien
-        lista = lista.substring(0, lista.length()-2) + ".";
+        if (!lista.isEmpty())
+            lista = lista.substring(0, lista.length()-2) + ".";
 
         //establecemos el tamaño maximo de la imagen
         holder.price.setText(ped.getPrecio() + "€");
-        holder.dateOrderer.setText( ped.getDateOrdered().getDayOfMonth() + "-" + ped.getDateOrdered().getMonthValue() + "-"  + ped.getDateOrdered().getYear());
+        //holder.dateOrderer.setText( ped.getDateOrdered().getDayOfMonth() + "-" + ped.getDateOrdered().getMonthValue() + "-"  + ped.getDateOrdered().getYear());
         holder.listProducts.setText(lista);
         holder.anotherTime.setVisibility(View.VISIBLE);
         if (ped.getDateOrdered().isBefore(LocalDateTime.now().minusMinutes(2)))
