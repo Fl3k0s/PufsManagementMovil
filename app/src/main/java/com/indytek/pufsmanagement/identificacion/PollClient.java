@@ -17,6 +17,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
+import com.indytek.pufsmanagement.PedidoSerialize;
 import com.indytek.pufsmanagement.objects.MetodoDePago;
 import com.indytek.pufsmanagement.objects.Pedido;
 import com.indytek.pufsmanagement.objects.Producto;
@@ -84,6 +85,14 @@ public class PollClient {
         return nuevoPedido;
     }
 
+    public LiveData<Pedido> getNuevoPedidoSerilize(PedidoSerialize pedido) {
+        if (nuevoPedido == null) {
+            nuevoPedido = new MutableLiveData<Pedido>();
+            newPedidoSerialize(pedido);
+        }
+        return nuevoPedido;
+    }
+
     public LiveData<List<Producto>> getProductos(Tipo tipo, Rango rango) {
         if (productos == null) {
             productos = new MutableLiveData<List<Producto>>();
@@ -106,7 +115,9 @@ public class PollClient {
             public LocalDateTime deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
                 return LocalDateTime.parse(json.getAsString()); }
 
-        }).registerTypeHierarchyAdapter(Producto[].class, new JsonSerializer<Producto[]>() {
+        })/*
+        //FIXME: arreglar la serializacion con herencia para la siguiente versión
+        .registerTypeHierarchyAdapter(Producto[].class, new JsonSerializer<Producto[]>() {
             @Override
             public JsonElement serialize(Producto[] src, Type typeOfSrc, JsonSerializationContext context) {
                 JsonArray array = new JsonArray();
@@ -120,29 +131,12 @@ public class PollClient {
                 }
                 return array;
             }
-        }).registerTypeAdapter(Producto[].class, new JsonDeserializer<Producto[]>() {
+        })*/.registerTypeAdapter(Producto[].class, new JsonDeserializer<Producto[]>() {
             @Override
             public Producto[] deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
                 JsonArray obj = json.getAsJsonArray();
                 Gson g = new Gson();
                 Producto[] p = g.fromJson(obj, Producto[].class);
-                return p;
-            }
-        }).registerTypeAdapter(MetodoDePago[].class, new JsonDeserializer<MetodoDePago[]>() {
-            @Override
-            public MetodoDePago[] deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
-                JsonArray obj = json.getAsJsonArray();
-                Gson g = new Gson();
-                MetodoDePago[] p = g.fromJson(obj, MetodoDePago[].class);
-                return p;
-            }
-        })
-        .registerTypeAdapter(MetodoDePago.class, new JsonDeserializer<MetodoDePago>() {
-            @Override
-            public MetodoDePago deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
-                JsonArray obj = json.getAsJsonArray();
-                Gson g = new Gson();
-                MetodoDePago p = g.fromJson(obj, MetodoDePago.class);
                 return p;
             }
         }).registerTypeAdapter(Pedido[].class, new JsonDeserializer<Pedido[]>() {
@@ -238,6 +232,7 @@ public class PollClient {
         });
     }
 
+    //TODO: Arreglar el agregar pedido
     private void newPedido(Pedido p){
         PollService service = getApiService();
         Call<Pedido> pedido = service.realizarPedido(p);
@@ -249,6 +244,29 @@ public class PollClient {
                     nuevoPedido.setValue(response.body());
                 }else{
                     System.out.println("is null");
+                    //TODO: Poner Toast con mensaje de bad register
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Pedido> call, Throwable t) {
+
+            }
+        });
+    }
+
+    private void newPedidoSerialize(PedidoSerialize p){
+        PollService service = getApiService();
+        Call<Pedido> pedido = service.realizarPedidoSerialize(p);
+
+        pedido.enqueue(new Callback<Pedido>() {
+            @Override
+            public void onResponse(Call<Pedido> call, Response<Pedido> response) {
+                System.out.println(response.message());
+                if(response.body() != null){
+                    nuevoPedido.setValue(response.body());
+                }else{
+                    System.out.println("is null pedido");
                     //TODO: Poner Toast con mensaje de bad register
                 }
             }

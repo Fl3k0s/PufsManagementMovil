@@ -6,106 +6,163 @@
     android:layout_height="match_parent"
     tools:context=".Registro">
 
+    <EditText
+        android:id="@+id/editTextPiso"
+        android:layout_width="65dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="392dp"
+        android:ems="10"
+        android:inputType="number|textEmailAddress"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.065"
+        app:layout_constraintStart_toEndOf="@+id/txtNumero"
+        app:layout_constraintTop_toBottomOf="@+id/editTextPassR" />
+
     <TextView
-        android:id="@+id/txtUserR"
+        android:id="@+id/txtPuerta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:layout_marginStart="184dp"
+        android:layout_marginTop="28dp"
+        android:fontFamily="sans-serif-condensed"
+        android:shadowColor="#000000"
+        android:shadowDx="0"
+        android:shadowDy="5"
+        android:shadowRadius="4"
+        android:text="Puerta"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtPortal" />
+
+    <TextView
+        android:id="@+id/txtPiso"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="408dp"
         android:layout_marginEnd="250dp"
         android:fontFamily="sans-serif-condensed"
         android:shadowColor="#000000"
         android:shadowDx="0"
         android:shadowDy="5"
         android:shadowRadius="4"
-        android:text="Usuario"
+        android:text="Piso"
         android:textColor="#000000"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.285"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/txtPassR2" />
 
     <EditText
-        android:id="@+id/editTextUserR"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="150dp"
-        android:layout_marginLeft="150dp"
-        android:layout_marginTop="90dp"
+        android:id="@+id/editTextPuerta"
+        android:layout_width="65dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="392dp"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintHorizontal_bias="0.6"
+        app:layout_constraintStart_toEndOf="@+id/txtNumero"
+        app:layout_constraintTop_toBottomOf="@+id/editTextPassR" />
+
+    <EditText
+        android:id="@+id/editTextPortal"
+        android:layout_width="65dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="340dp"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.6"
+        app:layout_constraintStart_toEndOf="@+id/txtNumero"
+        app:layout_constraintTop_toBottomOf="@+id/editTextPassR" />
 
     <TextView
-        android:id="@+id/txtPassR"
+        android:id="@+id/txtPortal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginStart="188dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="sans-serif-condensed"
+        android:shadowColor="#000000"
+        android:shadowDx="0"
+        android:shadowDy="5"
+        android:shadowRadius="4"
+        android:text="Portal"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextCalle" />
+
+    <TextView
+        android:id="@+id/txtCalle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="312dp"
         android:layout_marginEnd="250dp"
         android:fontFamily="sans-serif-condensed"
         android:shadowColor="#000000"
         android:shadowDx="0"
         android:shadowDy="5"
         android:shadowRadius="4"
-        android:text="Contraseña"
+        android:text="Calle"
         android:textColor="#000000"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.547"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtUserR" />
+        app:layout_constraintTop_toBottomOf="@+id/txtPassR2" />
 
     <EditText
-        android:id="@+id/editTextPassR"
+        android:id="@+id/editTextCalle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="150dp"
-        android:layout_marginLeft="150dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="284dp"
         android:ems="10"
-        android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextUserR" />
-
-    <TextView
-        android:id="@+id/txtPassR2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="250dp"
-        android:fontFamily="sans-serif-condensed"
-        android:shadowColor="#000000"
-        android:shadowDx="0"
-        android:shadowDy="5"
-        android:shadowRadius="4"
-        android:text="Repite Contraseña"
-        android:textColor="#000000"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtPassR" />
-
-    <EditText
-        android:id="@+id/editTextPassR2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="150dp"
-        android:layout_marginLeft="150dp"
-        android:layout_marginTop="25dp"
-        android:ems="10"
-        android:inputType="textPassword"
+        android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.509"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextPassR" />
 
+    <EditText
+        android:id="@+id/editTextNumero"
+        android:layout_width="65dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="340dp"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.067"
+        app:layout_constraintStart_toEndOf="@+id/txtNumero"
+        app:layout_constraintTop_toBottomOf="@+id/editTextPassR" />
+
+    <TextView
+        android:id="@+id/txtNumero"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="356dp"
+        android:layout_marginEnd="250dp"
+        android:fontFamily="sans-serif-condensed"
+        android:shadowColor="#000000"
+        android:shadowDx="0"
+        android:shadowDy="5"
+        android:shadowRadius="4"
+        android:text="Numero"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.282"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtPassR2" />
+
     <TextView
         android:id="@+id/txtEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="256dp"
         android:layout_marginEnd="250dp"
         android:fontFamily="sans-serif-condensed"
         android:shadowColor="#000000"
@@ -116,6 +173,7 @@
         android:textColor="#000000"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.547"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtPassR2" />
 
@@ -124,36 +182,248 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="150dp"
-        android:layout_marginLeft="150dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="228dp"
         android:ems="10"
         android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.509"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPassR2" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextPassR" />
 
-    <CheckBox
-        android:id="@+id/checkBoxAcceptTerms"
+    <TextView
+        android:id="@+id/txtDni"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="204dp"
+        android:layout_marginEnd="250dp"
         android:fontFamily="sans-serif-condensed"
-        android:text="Aceptar términos y condiciones"
+        android:shadowColor="#000000"
+        android:shadowDx="0"
+        android:shadowDy="5"
+        android:shadowRadius="4"
+        android:text="DNI"
+        android:textColor="#000000"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.547"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtEmail" />
+        app:layout_constraintTop_toBottomOf="@+id/txtPassR2" />
+
+    <EditText
+        android:id="@+id/editTextDni"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="150dp"
+        android:layout_marginTop="176dp"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.509"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextPassR" />
+
+    <EditText
+        android:id="@+id/editTextApellido1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="150dp"
+        android:layout_marginTop="68dp"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.509"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextPassR" />
+
+    <TextView
+        android:id="@+id/txtApellido1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="96dp"
+        android:layout_marginEnd="250dp"
+        android:fontFamily="sans-serif-condensed"
+        android:shadowColor="#000000"
+        android:shadowDx="0"
+        android:shadowDy="5"
+        android:shadowRadius="4"
+        android:text="Primer apellido"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.547"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtPassR2" />
+
+    <EditText
+        android:id="@+id/editTextNombre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="150dp"
+        android:layout_marginTop="12dp"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.509"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextPassR" />
+
+    <EditText
+        android:id="@+id/editTextUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="150dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.509"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtUserR"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="250dp"
+        android:fontFamily="sans-serif-condensed"
+        android:shadowColor="#000000"
+        android:shadowDx="0"
+        android:shadowDy="5"
+        android:shadowRadius="4"
+        android:text="Usuario"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtPassR"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="250dp"
+        android:fontFamily="sans-serif-condensed"
+        android:shadowColor="#000000"
+        android:shadowDx="0"
+        android:shadowDy="5"
+        android:shadowRadius="4"
+        android:text="Contraseña"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.55"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtUserR" />
+
+    <EditText
+        android:id="@+id/editTextPass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="150dp"
+        android:layout_marginTop="4dp"
+        android:ems="10"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.509"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextUser" />
+
+    <TextView
+        android:id="@+id/txtPassR2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="250dp"
+        android:fontFamily="sans-serif-condensed"
+        android:shadowColor="#000000"
+        android:shadowDx="0"
+        android:shadowDy="5"
+        android:shadowRadius="4"
+        android:text="Repite Contraseña"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.516"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtPassR" />
+
+    <EditText
+        android:id="@+id/editTextPassR"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="150dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.509"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextPass" />
+
+    <TextView
+        android:id="@+id/txtNombre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="250dp"
+        android:fontFamily="sans-serif-condensed"
+        android:shadowColor="#000000"
+        android:shadowDx="0"
+        android:shadowDy="5"
+        android:shadowRadius="4"
+        android:text="Nombre"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.514"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtPassR2" />
+
+    <EditText
+        android:id="@+id/editTextApellido2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="150dp"
+        android:layout_marginTop="120dp"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.509"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextPassR" />
+
+    <TextView
+        android:id="@+id/txtApellido2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="148dp"
+        android:layout_marginEnd="250dp"
+        android:fontFamily="sans-serif-condensed"
+        android:shadowColor="#000000"
+        android:shadowDx="0"
+        android:shadowDy="5"
+        android:shadowRadius="4"
+        android:text="Segundo apellido"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.547"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtPassR2" />
 
     <Button
         android:id="@+id/buttonRegistrerOk"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
         android:background="#00A57F"
         android:rotationX="10"
         android:text="Registrarse"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkBoxAcceptTerms" />
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

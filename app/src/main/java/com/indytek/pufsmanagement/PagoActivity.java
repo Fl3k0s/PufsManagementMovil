@@ -22,6 +22,8 @@ import com.indytek.pufsmanagement.objects.Producto;
 import com.indytek.pufsmanagement.objects.Tipo;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 import lombok.var;
 
@@ -107,8 +109,8 @@ public class PagoActivity extends AppCompatActivity {
                 Intent i= new Intent(getApplicationContext(),MainActivity.class);
 
 
-                //TODO: Incorporar la creacion del pedido y mandarlo a la API
-                Pedido pedido = Pedido.builder().id(0)
+                //FIXME: Arreglar la serializacion del pedido
+                /*Pedido pedido = Pedido.builder().id(0)
                         .username(Perfil.usuario.getUsername())
                         .dateOrdered(null)
                         .android(true)
@@ -118,7 +120,34 @@ public class PagoActivity extends AppCompatActivity {
                         .notes("")
                         .payMethod(pago)
                         .products(Carrito.productos)
+                        .build();*/
+                List<Integer> idsProductos = new ArrayList<>();
+
+                int payMethod = 0;
+                switch (pago){
+                    case VISA:
+                        payMethod = 1;
+                        break;
+                    case EFECTIVO:
+                        payMethod = 2;
+                        break;
+                }
+
+                for(Producto pedido : Carrito.productos)
+                    idsProductos.add(pedido.getId());
+
+
+                PedidoSerialize pedido = PedidoSerialize.builder()
+                        .android(true)
+                        .notes("")
+                        .username(Perfil.usuario.getUsername())
+                        .payMethod(payMethod)
+                        .products(idsProductos)
+                        .pay(Float.parseFloat(cambio.getText().toString()))
+                        .exchange(cambio.getText().toString() != null ? (preciof - 0) : preciof - Float.parseFloat(cambio.getText().toString()))
+                        .price(preciof)
                         .build();
+
                 Carrito.productos.clear();
                 hacerPedido(pedido);
 
@@ -126,6 +155,8 @@ public class PagoActivity extends AppCompatActivity {
 
             }
         });
+
+
         builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 dialog.cancel();
@@ -142,8 +173,8 @@ public class PagoActivity extends AppCompatActivity {
     }
 
 
-    public void hacerPedido(Pedido pedido){
-        apiClient.getNuevoPedido(pedido).observe(this, new Observer<Pedido>() {
+    public void hacerPedido(PedidoSerialize pedido){
+        apiClient.getNuevoPedidoSerilize(pedido).observe(this, new Observer<Pedido>() {
             @Override
             public void onChanged(Pedido pedido) {
                 System.out.println(pedido);

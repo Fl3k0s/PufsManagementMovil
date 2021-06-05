@@ -38,7 +38,7 @@ public class Pedido implements Serializable {
 	@SerializedName("android")
 	private boolean android;
 
-	@SerializedName("precio")
+	@SerializedName("price")
 	private float precio;
 	@SerializedName("pay")
 	private float pay;
@@ -55,7 +55,7 @@ public class Pedido implements Serializable {
 	@SerializedName("products")
 	private List<Producto> products;
 
-	@SerializedName("username")
+	@SerializedName("cliUsername")
 	private String username;
 	
 }

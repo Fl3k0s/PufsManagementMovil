@@ -1,5 +1,6 @@
 package com.indytek.pufsmanagement.identificacion;
 
+import com.indytek.pufsmanagement.PedidoSerialize;
 import com.indytek.pufsmanagement.objects.Pedido;
 import com.indytek.pufsmanagement.objects.Producto;
 import com.indytek.pufsmanagement.objects.Rango;
@@ -33,6 +34,9 @@ public interface PollService {
 
     @POST(Urls.HACERPEDIDO)
     public Call<Pedido> realizarPedido(@Body Pedido pedido);
+
+    @POST(Urls.HACERPEDIDOSERIALIZE)
+    public Call<Pedido> realizarPedidoSerialize(@Body PedidoSerialize pedido);
 
     @GET(Urls.PEDIDOSPORUSER)
     public Call<List<Pedido>> pedidosPorUsuario(@Query("user") String user);

@@ -25,7 +25,8 @@ public class Persona implements Serializable {
 	@EqualsAndHashCode.Include
     @SerializedName("id")
 	private int id;
-
+	@SerializedName("dni")
+	private String dni;
 	@SerializedName("name")
 	private String name;
 
