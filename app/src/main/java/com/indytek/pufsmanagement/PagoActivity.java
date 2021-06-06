@@ -136,6 +136,14 @@ public class PagoActivity extends AppCompatActivity {
                 for(Producto pedido : Carrito.productos)
                     idsProductos.add(pedido.getId());
 
+                if (cambio.getText().toString().equals("")){
+                    cambio.setText("0");
+                }
+                Float cambioF = Float.parseFloat(cambio.getText().toString());
+
+                if (cambioF == null){
+                    cambioF = 0f;
+                }
 
                 PedidoSerialize pedido = PedidoSerialize.builder()
                         .android(true)

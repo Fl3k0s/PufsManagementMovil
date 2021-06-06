@@ -32,7 +32,6 @@
         android:layout_marginTop="90dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="admin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -64,7 +63,6 @@
         android:layout_marginTop="25dp"
         android:ems="10"
         android:inputType="textPassword"
-        android:text="admin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextPayMethod" />

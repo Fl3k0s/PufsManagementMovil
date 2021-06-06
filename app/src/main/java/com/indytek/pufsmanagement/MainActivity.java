@@ -6,6 +6,8 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.google.android.material.navigation.NavigationView;
 
@@ -47,7 +49,12 @@ public class MainActivity extends AppCompatActivity {
         Intent productos = new Intent(getApplicationContext(), Productos.class);
         Intent perfil = new Intent(getApplicationContext(), Perfil.class);
 
-        ImageButton perfilBtn = navigationView.getHeaderView(0).findViewById(R.id.profilePhoto);
+        ImageView perfilBtn = navigationView.getHeaderView(0).findViewById(R.id.profilePhoto);
+        TextView user = navigationView.getHeaderView(0).findViewById(R.id.nameOfUser),
+                mail = navigationView.getHeaderView(0).findViewById(R.id.emailOfUser);
+
+        user.setText(Perfil.usuario.getUsername());
+        mail.setText(Perfil.usuario.getPersona().getEmail());
 
         perfilBtn.setOnClickListener(new View.OnClickListener() {
             @Override
