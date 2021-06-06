@@ -9,18 +9,22 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import androidx.lifecycle.LifecycleOwner;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.indytek.pufsmanagement.Carrito;
 import com.indytek.pufsmanagement.MainActivity;
 import com.indytek.pufsmanagement.R;
+import com.indytek.pufsmanagement.identificacion.PollClient;
 import com.indytek.pufsmanagement.objects.Pedido;
 import com.indytek.pufsmanagement.objects.Producto;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import androidx.lifecycle.Observer;
+
 
 import lombok.var;
 
@@ -32,6 +36,7 @@ public class PedidosAdapter extends RecyclerView.Adapter<PedidosAdapter.ViewHold
     private List<Pedido> mPedidos;
     private LayoutInflater mInflater;
     private ItemClickListener mClickListener;
+
 
     // data is passed into the constructor
     public PedidosAdapter(Context context) {
@@ -93,6 +98,7 @@ public class PedidosAdapter extends RecyclerView.Adapter<PedidosAdapter.ViewHold
         TextView listProducts, price, dateOrderer;
         Context context;
         Pedido p;
+        PollClient apiCall;
 
         ViewHolder(View itemView) {
             super(itemView);
@@ -103,6 +109,7 @@ public class PedidosAdapter extends RecyclerView.Adapter<PedidosAdapter.ViewHold
             dateOrderer = itemView.findViewById(R.id.dateOrderer);
             price = itemView.findViewById(R.id.precio);
             itemView.setOnClickListener(this);
+            apiCall = new PollClient();
         }
 
         void setOnClickListener(){
@@ -115,7 +122,7 @@ public class PedidosAdapter extends RecyclerView.Adapter<PedidosAdapter.ViewHold
             switch (view.getId()){
                 case R.id.cancel:
                     Intent intent = new Intent(context, MainActivity.class);
-
+                    cancelPedido();
                     context.startActivity(intent);
                     break;
                 case R.id.pedirDeNuevo:
@@ -127,6 +134,21 @@ public class PedidosAdapter extends RecyclerView.Adapter<PedidosAdapter.ViewHold
             }
 
             if (mClickListener != null) mClickListener.onItemClick(view, getAdapterPosition());
+        }
+
+        public void cancelPedido(){
+            Intent vueltaAMain = new Intent(context, MainActivity.class);
+            apiCall.cancelPedido(p.getUsername(), p.getId())
+                    .observe((LifecycleOwner) context, new Observer<Pedido>(){
+
+                @Override
+                public void onChanged(Pedido pedido) {
+                    System.out.println(pedido);
+                    context.startActivity(vueltaAMain);
+                }
+            });
+
+            //context.startActivity(vueltaAMain);
         }
     }
 

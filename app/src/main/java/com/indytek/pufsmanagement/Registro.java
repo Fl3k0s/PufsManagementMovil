@@ -12,10 +12,14 @@ import androidx.lifecycle.Observer;
 import com.indytek.pufsmanagement.identificacion.PollClient;
 import com.indytek.pufsmanagement.objects.Direccion;
 import com.indytek.pufsmanagement.objects.Persona;
+import com.indytek.pufsmanagement.objects.PersonaSerialize;
 import com.indytek.pufsmanagement.objects.Rango;
 import com.indytek.pufsmanagement.objects.Usuario;
+import com.indytek.pufsmanagement.objects.UsuarioSerilize;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 
 public class Registro extends AppCompatActivity {
     Intent intAbrirLogIn;
@@ -48,18 +52,13 @@ public class Registro extends AppCompatActivity {
         findViewById(R.id.buttonRegistrerOk).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Persona persona = Persona.builder()
-                        .id(0)
-                        .dni(dni.getText().toString())
-                        .name(nombre.getText().toString())
-                        .email(mail.getText().toString())
-                        .secondName1(apellido1.getText().toString())
-                        .secondName2(apellido2.getText().toString())
-                        .build();
-                int pisoInt = 0;
+
+                Integer pisoInt = 0;
                 System.out.println(piso.getText().toString());
-                if (!piso.getText().toString().equals("") || piso.getText().toString() != null){
-                     pisoInt= Integer.getInteger(piso.getText().toString());
+                String pisoStrg = piso.getText().toString();
+                System.out.println(pisoStrg);
+                if (!pisoStrg.equals("")){
+                    pisoInt = Integer.getInteger(pisoStrg);
                 }
                 System.out.println(pisoInt);
 
@@ -67,21 +66,29 @@ public class Registro extends AppCompatActivity {
                         .id(0)
                         .calle(calle.getText().toString())
                         .numero(calle.getText().toString())
-                        .piso(pisoInt)
+                        .piso(piso.getText().toString())
                         .puerta(puerta.getText().toString())
                         .portal(portal.getText().toString())
                         .build();
 
                 if (contrasenia.getText().toString().equals(contraseniaR.getText().toString())){
-                    Usuario u1 = Usuario.builder()
-                            .username(username.getText().toString())
-                            .password("")
-                            .direccion(null)
-                            .rango(Rango.BRONCE)
-                            .orders(new HashSet<>())
-                            .persona(persona)
+                    PersonaSerialize persona = PersonaSerialize.builder()
+                            .dni(dni.getText().toString())
+                            .name(nombre.getText().toString())
+                            .email(mail.getText().toString())
+                            .secondName1(apellido1.getText().toString())
+                            .secondName2(apellido2.getText().toString())
                             .build();
-
+                    System.out.println(persona);
+                    UsuarioSerilize u1 = UsuarioSerilize.builder()
+                            .username(username.getText().toString())
+                            .password(contrasenia.getText().toString())
+                            .direccion(direccion)
+                            .rango(Rango.BRONCE)
+                            .orders(new ArrayList<>())
+                            .person(persona)
+                            .build();
+                    System.out.println(u1);
                     registro(u1);
                 }else {
                     Toast toast1 =
@@ -99,11 +106,12 @@ public class Registro extends AppCompatActivity {
 
     }
 
-    public void registro(Usuario u){
-        apiService.getRegister(u).observe(this, new Observer<Usuario>() {
+    public void registro(UsuarioSerilize u){
+        apiService.newPubsRegister(u).observe(this, new Observer<Usuario>() {
             @Override
             public void onChanged(Usuario usuario) {
                 Perfil.usuario = usuario;
+                System.out.println(usuario);
                 startActivity(intAbrirLogIn);
             }
         });

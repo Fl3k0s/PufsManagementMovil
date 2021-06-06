@@ -44,7 +44,6 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        Intent botones = new Intent(getApplicationContext(),BotonesActivity.class);
         Intent productos = new Intent(getApplicationContext(), Productos.class);
         Intent perfil = new Intent(getApplicationContext(), Perfil.class);
 
@@ -56,8 +55,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(perfil);
             }
         });
-
-        Button b = (Button)findViewById(R.id.toBotones);
 
         findViewById(R.id.hambuguesas).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -88,13 +85,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        b.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                startActivity(botones);
-            }
-        });
 
     }
 

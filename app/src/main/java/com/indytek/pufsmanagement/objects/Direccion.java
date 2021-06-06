@@ -37,7 +37,7 @@ public class Direccion implements Serializable {
     private String portal;
 
     @SerializedName("piso")
-    private int piso;
+    private String piso;
 
     @SerializedName("puerta")
     private String puerta;

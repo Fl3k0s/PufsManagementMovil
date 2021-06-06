@@ -74,6 +74,7 @@ public class LogIn extends AppCompatActivity {
             @Override
             public void onChanged(Usuario usuario) {
                 Perfil.usuario = usuario;
+                System.out.println(usuario);
                 startActivity(intAbrirMain);
 
             }

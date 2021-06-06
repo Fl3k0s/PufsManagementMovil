@@ -20,10 +20,12 @@ import com.google.gson.JsonSerializer;
 import com.indytek.pufsmanagement.PedidoSerialize;
 import com.indytek.pufsmanagement.objects.MetodoDePago;
 import com.indytek.pufsmanagement.objects.Pedido;
+import com.indytek.pufsmanagement.objects.Persona;
 import com.indytek.pufsmanagement.objects.Producto;
 import com.indytek.pufsmanagement.objects.Rango;
 import com.indytek.pufsmanagement.objects.Tipo;
 import com.indytek.pufsmanagement.objects.Usuario;
+import com.indytek.pufsmanagement.objects.UsuarioSerilize;
 
 import org.json.JSONObject;
 
@@ -52,6 +54,15 @@ public class PollClient {
     private MutableLiveData<List<Pedido>> pedidos;
     private MutableLiveData<Usuario> usuarioModificado;
     private MutableLiveData<Pedido> nuevoPedido;
+    private MutableLiveData<Pedido> pedidoCancelado;
+
+    public LiveData<Pedido> cancelPedido(String user, int id){
+        if (pedidoCancelado == null){
+            pedidoCancelado = new MutableLiveData<Pedido>();
+            cancelarPedido(user, id);
+        }
+        return pedidoCancelado;
+    }
 
     public LiveData<Usuario> getLogin(String username, String pass) {
         if (login == null) {
@@ -83,6 +94,14 @@ public class PollClient {
             newPedido(pedido);
         }
         return nuevoPedido;
+    }
+
+    public LiveData<Usuario> newPubsRegister (UsuarioSerilize usuario) {
+        if (register == null) {
+            register = new MutableLiveData<Usuario>();
+            registerPubsUser(usuario);
+        }
+        return register;
     }
 
     public LiveData<Pedido> getNuevoPedidoSerilize(PedidoSerialize pedido) {
@@ -137,6 +156,14 @@ public class PollClient {
                 JsonArray obj = json.getAsJsonArray();
                 Gson g = new Gson();
                 Producto[] p = g.fromJson(obj, Producto[].class);
+                return p;
+            }
+        }).registerTypeAdapter(Persona.class, new JsonDeserializer<Persona>() {
+            @Override
+            public Persona deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
+                JsonObject obj = json.getAsJsonObject();
+                Gson g = new Gson();
+                Persona p = g.fromJson(obj, Persona.class);
                 return p;
             }
         }).registerTypeAdapter(Pedido[].class, new JsonDeserializer<Pedido[]>() {
@@ -296,6 +323,48 @@ public class PollClient {
             @Override
             public void onFailure(Call<Usuario> call, Throwable t) {
                 //TODO: Poner Toast con mensaje de bad register
+                Log.d("Error acceso datos", t.getMessage());
+            }
+        });
+    }
+    private void registerPubsUser(UsuarioSerilize u){
+        PollService service = getApiService();
+        Call<Usuario> usuarios = service.pubsRegister2(u);
+
+        usuarios.enqueue(new Callback<Usuario>() {
+            @Override
+            public void onResponse(Call<Usuario> call, Response<Usuario> response) {
+                if(response.body() != null){
+                    register.setValue(response.body());
+                }else{
+                    System.out.println("is null");
+                    //TODO: Poner Toast con mensaje de bad register
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Usuario> call, Throwable t) {
+                //TODO: Poner Toast con mensaje de bad register
+                Log.d("Error acceso datos", t.getMessage());
+            }
+        });
+    }
+
+    private void cancelarPedido(String user, int id){
+        PollService service = getApiService();
+        Call<Pedido> usuarios = service.cancelarPedido(user, id);
+
+        usuarios.enqueue(new Callback<Pedido>() {
+            @Override
+            public void onResponse(Call<Pedido> call, Response<Pedido> response) {
+                if (response.body() != null){
+                    System.out.println(response.body());
+                }
+                else System.out.println("error borrando");
+            }
+
+            @Override
+            public void onFailure(Call<Pedido> call, Throwable t) {
                 Log.d("Error acceso datos", t.getMessage());
             }
         });

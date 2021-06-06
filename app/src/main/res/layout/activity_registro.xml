@@ -16,7 +16,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.065"
         app:layout_constraintStart_toEndOf="@+id/txtNumero"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPassR" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextPassR"
+        tools:text="1" />
 
     <TextView
         android:id="@+id/txtPuerta"
@@ -64,7 +65,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.6"
         app:layout_constraintStart_toEndOf="@+id/txtNumero"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPassR" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextPassR"
+        tools:text="1" />
 
     <EditText
         android:id="@+id/editTextPortal"
@@ -76,7 +78,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.6"
         app:layout_constraintStart_toEndOf="@+id/txtNumero"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPassR" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextPassR"
+        tools:text="1" />
 
     <TextView
         android:id="@+id/txtPortal"
@@ -122,10 +125,12 @@
         android:layout_marginTop="284dp"
         android:ems="10"
         android:inputType="textEmailAddress"
+        android:text="calle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.509"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPassR" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextPassR"
+        tools:text="calle " />
 
     <EditText
         android:id="@+id/editTextNumero"
@@ -137,7 +142,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.067"
         app:layout_constraintStart_toEndOf="@+id/txtNumero"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPassR" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextPassR"
+        tools:text="1" />
 
     <TextView
         android:id="@+id/txtNumero"
@@ -185,6 +191,7 @@
         android:layout_marginTop="228dp"
         android:ems="10"
         android:inputType="textEmailAddress"
+        android:text="oscar@gmail.com"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.509"
         app:layout_constraintStart_toStartOf="parent"
@@ -217,10 +224,12 @@
         android:layout_marginTop="176dp"
         android:ems="10"
         android:inputType="textEmailAddress"
+        android:text="oscar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.509"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPassR" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextPassR"
+        tools:text="oscar" />
 
     <EditText
         android:id="@+id/editTextApellido1"
@@ -230,10 +239,12 @@
         android:layout_marginTop="68dp"
         android:ems="10"
         android:inputType="textEmailAddress"
+        android:text="oscar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.509"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPassR" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextPassR"
+        tools:text="oscar" />
 
     <TextView
         android:id="@+id/txtApellido1"
@@ -262,10 +273,12 @@
         android:layout_marginTop="12dp"
         android:ems="10"
         android:inputType="textEmailAddress"
+        android:text="oscar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.509"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPassR" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextPassR"
+        tools:text="oscar" />
 
     <EditText
         android:id="@+id/editTextUser"
@@ -275,6 +288,7 @@
         android:layout_marginTop="16dp"
         android:ems="10"
         android:inputType="textPersonName"
+        android:text="oscar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.509"
         app:layout_constraintStart_toStartOf="parent"
@@ -326,6 +340,7 @@
         android:layout_marginTop="4dp"
         android:ems="10"
         android:inputType="textPassword"
+        android:text="oscar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.509"
         app:layout_constraintStart_toStartOf="parent"
@@ -358,10 +373,12 @@
         android:layout_marginTop="8dp"
         android:ems="10"
         android:inputType="textPassword"
+        android:text="oscar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.509"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPass" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextPass"
+        tools:text="oscar" />
 
     <TextView
         android:id="@+id/txtNombre"
@@ -390,10 +407,12 @@
         android:layout_marginTop="120dp"
         android:ems="10"
         android:inputType="textEmailAddress"
+        android:text="oscar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.509"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPassR" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextPassR"
+        tools:text="oscar" />
 
     <TextView
         android:id="@+id/txtApellido2"

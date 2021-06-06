@@ -2,10 +2,12 @@ package com.indytek.pufsmanagement.identificacion;
 
 import com.indytek.pufsmanagement.PedidoSerialize;
 import com.indytek.pufsmanagement.objects.Pedido;
+import com.indytek.pufsmanagement.objects.Persona;
 import com.indytek.pufsmanagement.objects.Producto;
 import com.indytek.pufsmanagement.objects.Rango;
 import com.indytek.pufsmanagement.objects.Tipo;
 import com.indytek.pufsmanagement.objects.Usuario;
+import com.indytek.pufsmanagement.objects.UsuarioSerilize;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,6 +34,9 @@ public interface PollService {
     @POST(Urls.REGISTER)
     public Call<Usuario> pubsRegister(@Body Usuario usuario);
 
+    @POST(Urls.PUBSREGISTER)
+    public Call<Usuario> pubsRegister2(@Body UsuarioSerilize usuario);
+
     @POST(Urls.HACERPEDIDO)
     public Call<Pedido> realizarPedido(@Body Pedido pedido);
 
@@ -44,11 +49,12 @@ public interface PollService {
     @GET(Urls.PRODUCTOSPORTIPOYRANGO)
     public Call<List<Producto>> productosPorTipoYRango(@Query("rango") Rango rango, @Query("tipo") Tipo tipo);
 
+    //TODO implementar en futura version
     @PUT("")
     public Call<Usuario> actualizarUsuario(@Body Usuario usuario);
 
     @PUT(Urls.CANCELPEDIDO)
-    public void cancelarPedido(@Query("user")String user, @Query("id") int id);
+    public Call<Pedido> cancelarPedido(@Query("user")String user, @Query("id") int id);
 
 }
 
