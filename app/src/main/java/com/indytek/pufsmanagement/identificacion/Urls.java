@@ -3,7 +3,7 @@ package com.indytek.pufsmanagement.identificacion;
 public class Urls {
 
 
-    public static final String URLSERVIDOR = "http://192.168.43.87:8080/";
+    public static final String URLSERVIDOR = "http://139.47.98.2:8080/";
 
     public static final String URLTOKEN = "/token";
 
