@@ -6,73 +6,79 @@
     android:layout_height="match_parent"
     tools:context=".Carrito">
 
-    <ImageView
-        android:id="@+id/priceImg"
-        android:layout_width="50dp"
-        android:layout_height="75dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/buttonPagarCarrito"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.85"
-        app:srcCompat="@drawable/euro" />
-
-    <Button
-        android:id="@+id/buttonCancelCarrito"
-        android:layout_width="100dp"
-        android:layout_height="80dp"
-        android:text="Cancelar"
-        app:layout_constraintBottom_toTopOf="@+id/buttonAddCarrito"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.051"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <Button
-        android:id="@+id/buttonAddCarrito"
-        android:layout_width="100dp"
-        android:layout_height="80dp"
-        android:text="Ver Más"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/listOfCarrito"
+        android:layout_width="395dp"
+        android:layout_height="548dp"
+        android:layout_marginTop="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.051"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.972" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/textPrecioCarrito"
         android:layout_width="116dp"
         android:layout_height="72dp"
+        android:layout_marginTop="80dp"
         android:fontFamily="sans-serif-condensed"
         android:gravity="center"
         android:text="0"
         android:textSize="56sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/priceImg"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/buttonCancelCarrito"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.85" />
+        app:layout_constraintTop_toBottomOf="@+id/listOfCarrito" />
+
+    <ImageView
+        android:id="@+id/priceImg"
+        android:layout_width="50dp"
+        android:layout_height="75dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/listOfCarrito"
+        app:srcCompat="@drawable/euro" />
+
+    <Button
+        android:id="@+id/buttonCancelCarrito"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="#FF6464"
+        android:rotationX="10"
+        android:text="Cancelar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/listOfCarrito" />
 
     <Button
         android:id="@+id/buttonPagarCarrito"
-        android:layout_width="100dp"
-        android:layout_height="80dp"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="5dp"
+        android:backgroundTint="#FF6464"
+        android:rotationX="10"
         android:text="Pagar"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.948"
+        app:layout_constraintTop_toBottomOf="@+id/listOfCarrito" />
+
+    <Button
+        android:id="@+id/buttonAddCarrito"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="#FF6464"
+        android:rotationX="10"
+        android:text="Ver Más"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.849" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonCancelCarrito" />
 
     <TextView
         android:id="@+id/empty"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -80,13 +86,4 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.338" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/listOfCarrito"
-        android:layout_width="395dp"
-        android:layout_height="548dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>

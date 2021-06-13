@@ -36,6 +36,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-condensed"
                 android:text="Nickname"
+                android:textColor="#FF6464"
                 android:textSize="24sp" />
 
             <TextView
@@ -44,6 +45,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-condensed"
                 android:text="Nombre"
+                android:textColor="#FF6464"
                 android:textSize="24sp" />
 
             <TextView
@@ -52,6 +54,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-condensed"
                 android:text="Apellido"
+                android:textColor="#FF6464"
                 android:textSize="24sp" />
 
         </LinearLayout>
@@ -62,7 +65,7 @@
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
@@ -75,6 +78,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-condensed"
             android:text="Correo Electrónico (correo@pufs.es)"
+            android:textColor="#FF6464"
             android:textSize="24sp" />
 
         <TextView
@@ -83,17 +87,20 @@
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-condensed"
             android:text="Direccion (c/avda nº7 Bjo Drcha)"
+            android:textColor="#FF6464"
             android:textSize="24sp" />
     </LinearLayout>
 
     <Button
         android:id="@+id/buttonExitProfile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="296dp"
-        android:text="Button"
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        android:backgroundTint="#FF6464"
+        android:rotationX="10"
+        android:text="Salir"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/LinearLayout2" />
+        app:layout_constraintTop_toBottomOf="@+id/LinearLayout2" />
 </androidx.constraintlayout.widget.ConstraintLayout>

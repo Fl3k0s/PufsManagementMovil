@@ -9,7 +9,10 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/listViewPedidos"
         android:layout_width="match_parent"
-        android:layout_height="600dp"
+        android:layout_height="550dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -21,9 +24,13 @@
 
     <Button
         android:id="@+id/exitPedidos"
-        android:layout_width="391dp"
-        android:layout_height="99dp"
-        android:text="Button"
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        android:layout_marginBottom="50dp"
+        android:backgroundTint="#FF6464"
+        android:rotationX="10"
+        android:text="Salir"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

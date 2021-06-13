@@ -21,8 +21,8 @@
 
     <Button
         android:id="@+id/hambuguesas"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="160dp"
+        android:layout_height="50dp"
         android:layout_marginBottom="60dp"
         android:backgroundTint="#FF6464"
         android:text="hamburguesas"
@@ -31,20 +31,20 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/bebida"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="200dp"
+        android:id="@+id/perritos"
+        android:layout_width="160dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="60dp"
         android:backgroundTint="#FF6464"
-        android:text="bebida"
-        app:layout_constraintBottom_toBottomOf="@+id/nav_host_fragment"
+        android:text="Perritos"
+        app:layout_constraintBottom_toTopOf="@+id/raciones"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/raciones"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="160dp"
+        android:layout_height="50dp"
         android:layout_marginBottom="60dp"
         android:backgroundTint="#FF6464"
         android:text="raciones"
@@ -53,13 +53,13 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/perritos"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="60dp"
+        android:id="@+id/bebida"
+        android:layout_width="160dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="200dp"
         android:backgroundTint="#FF6464"
-        android:text="Perritos"
-        app:layout_constraintBottom_toTopOf="@+id/raciones"
+        android:text="bebida"
+        app:layout_constraintBottom_toBottomOf="@+id/nav_host_fragment"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
