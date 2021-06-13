@@ -46,7 +46,7 @@ public class Registro extends AppCompatActivity {
         mail = findViewById(R.id.editTextEmail);
         puerta = findViewById(R.id.editTextPuerta);
 
-        intAbrirLogIn  = new Intent(Registro.this, MainActivity.class);
+        intAbrirLogIn  = new Intent(Registro.this, NewMainActivity.class);
 
         apiService = new PollClient();
         findViewById(R.id.buttonRegistrerOk).setOnClickListener(new View.OnClickListener() {

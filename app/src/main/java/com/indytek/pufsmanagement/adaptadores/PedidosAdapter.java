@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.indytek.pufsmanagement.Carrito;
 import com.indytek.pufsmanagement.MainActivity;
+import com.indytek.pufsmanagement.NewMainActivity;
 import com.indytek.pufsmanagement.R;
 import com.indytek.pufsmanagement.identificacion.PollClient;
 import com.indytek.pufsmanagement.objects.Pedido;
@@ -121,7 +122,7 @@ public class PedidosAdapter extends RecyclerView.Adapter<PedidosAdapter.ViewHold
         public void onClick(View view) {
             switch (view.getId()){
                 case R.id.cancel:
-                    Intent intent = new Intent(context, MainActivity.class);
+                    Intent intent = new Intent(context, NewMainActivity.class);
                     cancelPedido();
                     context.startActivity(intent);
                     break;
@@ -137,7 +138,7 @@ public class PedidosAdapter extends RecyclerView.Adapter<PedidosAdapter.ViewHold
         }
 
         public void cancelPedido(){
-            Intent vueltaAMain = new Intent(context, MainActivity.class);
+            Intent vueltaAMain = new Intent(context, NewMainActivity.class);
             apiCall.cancelPedido(p.getUsername(), p.getId())
                     .observe((LifecycleOwner) context, new Observer<Pedido>(){
 

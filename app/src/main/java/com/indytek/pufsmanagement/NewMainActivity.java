@@ -4,24 +4,37 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.google.android.material.navigation.NavigationView;
-
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.lifecycle.Observer;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-public class MainActivity extends AppCompatActivity {
+import com.google.android.material.navigation.NavigationView;
+import com.indytek.pufsmanagement.adaptadores.ProductsAdapter;
+import com.indytek.pufsmanagement.identificacion.PollClient;
+import com.indytek.pufsmanagement.identificacion.SesionManager;
+import com.indytek.pufsmanagement.objects.Producto;
+import com.indytek.pufsmanagement.objects.Tipo;
+
+import java.util.List;
+
+public class NewMainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
+    ProductsAdapter adaptador;
+    PollClient apiClient;
+    SesionManager sesion;
+    List<Producto> productoList;
+    Tipo type;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +57,11 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(navigationView, navController);
         //fin del codigo autogenerado
 
+        RecyclerView recyclerView = findViewById(R.id.productosView);
+        recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
+        adaptador = new ProductsAdapter(this);
+        recyclerView.setAdapter(adaptador);
+
 
 
         Intent productos = new Intent(getApplicationContext(), Productos.class);
@@ -63,32 +81,20 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        findViewById(R.id.hamburguesas).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.btnBebida).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                productos.putExtra("tipo","hamburguesas");
-                startActivity(productos);
+                cargarProductos(Tipo.BEBIDA);
             }
         });
-        findViewById(R.id.perritos).setOnClickListener(new View.OnClickListener() {
+
+        findViewById(R.id.btnComida).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                productos.putExtra("tipo","perritos");
-                startActivity(productos);
-            }
-        });
-        findViewById(R.id.raciones).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                productos.putExtra("tipo","raciones");
-                startActivity(productos);
-            }
-        });
-        findViewById(R.id.bebida).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                productos.putExtra("tipo","bebida");
-                startActivity(productos);
+                cargarProductos(Tipo.HAMBURGUESA);
+                cargarProductos(Tipo.PATATAS);
+                cargarProductos(Tipo.ENTRANTE);
+                cargarProductos(Tipo.PLATO);
             }
         });
 
@@ -107,5 +113,19 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
+    }
+
+    public void cargarProductos(Tipo type){
+
+        apiClient.getProductos(type, Perfil.usuario.getRango())
+                .observe(this, new Observer<List<Producto>>() {
+                    @Override
+                    public void onChanged(List<Producto> productos) {
+                        productos.forEach(System.out::println);
+                        adaptador.addData(productos);
+                    }
+                });
+
+
     }
 }

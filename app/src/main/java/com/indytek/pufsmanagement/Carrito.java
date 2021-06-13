@@ -53,7 +53,7 @@ public class Carrito extends AppCompatActivity {
 
 
         more = findViewById(R.id.buttonAddCarrito);
-        final Intent i = new Intent(Carrito.this, MainActivity.class);
+        final Intent i = new Intent(Carrito.this, NewMainActivity.class);
         final Intent finishIOrder = new Intent(Carrito.this, PagoActivity.class);
         more.setOnClickListener(new View.OnClickListener() {
             @Override

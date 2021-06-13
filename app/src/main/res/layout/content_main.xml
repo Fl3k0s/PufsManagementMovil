@@ -19,48 +19,43 @@
         app:layout_constraintTop_toTopOf="parent"
         app:navGraph="@navigation/mobile_navigation" />
 
-    <Button
-        android:id="@+id/hambuguesas"
-        android:layout_width="160dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="60dp"
-        android:backgroundTint="#FF6464"
-        android:text="hamburguesas"
-        app:layout_constraintBottom_toTopOf="@+id/perritos"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/perritos"
-        android:layout_width="160dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="60dp"
-        android:backgroundTint="#FF6464"
-        android:text="Perritos"
-        app:layout_constraintBottom_toTopOf="@+id/raciones"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/raciones"
-        android:layout_width="160dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="60dp"
-        android:backgroundTint="#FF6464"
-        android:text="raciones"
-        app:layout_constraintBottom_toTopOf="@+id/bebida"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/bebida"
-        android:layout_width="160dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="200dp"
-        android:backgroundTint="#FF6464"
-        android:text="bebida"
+    <ImageView
+        android:id="@+id/hamburguesas"
+        android:layout_width="398dp"
+        android:layout_height="143dp"
         app:layout_constraintBottom_toBottomOf="@+id/nav_host_fragment"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.461"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.171"
+        app:srcCompat="@drawable/hamburguesas" />
+
+    <ImageView
+        android:id="@+id/perritos"
+        android:layout_width="395dp"
+        android:layout_height="136dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hamburguesas"
+        app:srcCompat="@drawable/perritos" />
+
+    <ImageView
+        android:id="@+id/raciones"
+        android:layout_width="395dp"
+        android:layout_height="132dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/perritos"
+        app:srcCompat="@drawable/raciones" />
+
+    <ImageView
+        android:id="@+id/bebida"
+        android:layout_width="365dp"
+        android:layout_height="140dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/raciones"
+        app:srcCompat="@drawable/bebidas" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

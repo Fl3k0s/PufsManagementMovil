@@ -40,7 +40,7 @@ public class LogIn extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        final Intent intAbrirMain = new Intent(LogIn.this, MainActivity.class);
+        final Intent intAbrirMain = new Intent(LogIn.this, NewMainActivity.class);
         final Intent intAbrirRegistro = new Intent(LogIn.this, Registro.class);
 
         user = findViewById(R.id.editTextPayMethod);

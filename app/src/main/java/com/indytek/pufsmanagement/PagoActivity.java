@@ -106,7 +106,7 @@ public class PagoActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int id) {
                 // Acción a realizar
                 dialog.dismiss();
-                Intent i= new Intent(getApplicationContext(),MainActivity.class);
+                Intent i= new Intent(getApplicationContext(),NewMainActivity.class);
 
 
                 //FIXME: Arreglar la serializacion del pedido

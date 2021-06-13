@@ -13,6 +13,8 @@ import java.util.Set;
 @AllArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @ToString
+@Getter
+@Setter
 
 
 

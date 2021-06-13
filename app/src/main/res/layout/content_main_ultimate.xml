@@ -32,6 +32,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/productosView"
         android:layout_width="360dp"
         android:layout_height="450dp"
         android:layout_marginTop="5dp"
