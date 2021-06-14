@@ -35,7 +35,7 @@ public class VistaPreviaActivity extends AppCompatActivity {
         rango = findViewById(R.id.rangoProducto);
 
         //con esto lo que hacemos es poner en el ImageButton la ruta de la foto en internet
-        Glide.with(getBaseContext()).load(producto.getImagen()).into(productoImg);
+        Glide.with(getBaseContext()).load(producto.getUrl_product()).into(productoImg);
         //le damos tamaño a la imagen del producto
 
 

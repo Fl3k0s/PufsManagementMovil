@@ -40,7 +40,7 @@ public class NewMainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         //Codigo creado por Android studio
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.new_activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -52,7 +52,7 @@ public class NewMainActivity extends AppCompatActivity {
                 R.id.nav_nuevoPedido, R.id.nav_pedidos, R.id.nav_sobreNosotros)
                 .setDrawerLayout(drawer)
                 .build();
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment2);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
         //fin del codigo autogenerado
@@ -62,7 +62,7 @@ public class NewMainActivity extends AppCompatActivity {
         adaptador = new ProductsAdapter(this);
         recyclerView.setAdapter(adaptador);
 
-
+        apiClient = new PollClient();
 
         Intent productos = new Intent(getApplicationContext(), Productos.class);
         Intent perfil = new Intent(getApplicationContext(), Perfil.class);
@@ -80,10 +80,12 @@ public class NewMainActivity extends AppCompatActivity {
                 startActivity(perfil);
             }
         });
+        cargarComida();
 
         findViewById(R.id.btnBebida).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                adaptador.clearData();
                 cargarProductos(Tipo.BEBIDA);
             }
         });
@@ -91,10 +93,7 @@ public class NewMainActivity extends AppCompatActivity {
         findViewById(R.id.btnComida).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                cargarProductos(Tipo.HAMBURGUESA);
-                cargarProductos(Tipo.PATATAS);
-                cargarProductos(Tipo.ENTRANTE);
-                cargarProductos(Tipo.PLATO);
+                cargarComida();
             }
         });
 
@@ -110,11 +109,18 @@ public class NewMainActivity extends AppCompatActivity {
 
     @Override
     public boolean onSupportNavigateUp() {
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment2);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
 
+    public void cargarComida(){
+        adaptador.clearData();
+        cargarProductos(Tipo.HAMBURGUESA);
+        cargarProductos(Tipo.PATATAS);
+        cargarProductos(Tipo.ENTRANTE);
+        cargarProductos(Tipo.PLATO);
+    }
     public void cargarProductos(Tipo type){
 
         apiClient.getProductos(type, Perfil.usuario.getRango())

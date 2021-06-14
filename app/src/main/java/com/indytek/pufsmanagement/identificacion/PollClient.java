@@ -57,74 +57,69 @@ public class PollClient {
     private MutableLiveData<Pedido> pedidoCancelado;
 
     public LiveData<Pedido> cancelPedido(String user, int id){
-        if (pedidoCancelado == null){
             pedidoCancelado = new MutableLiveData<Pedido>();
             cancelarPedido(user, id);
-        }
+
         return pedidoCancelado;
     }
 
     public LiveData<Usuario> getLogin(String username, String pass) {
-        if (login == null) {
+
             login = new MutableLiveData<Usuario>();
             loginUser(username, pass);
-        }
+
         return login;
     }
 
     public LiveData<Usuario> updateUser(Usuario u) {
-        if (login == null) {
+
             login = new MutableLiveData<Usuario>();
             updatearUsuario(u);
-        }
+
         return login;
     }
 
     public LiveData<Usuario> getRegister(Usuario usuario) {
-        if (register == null) {
             register = new MutableLiveData<Usuario>();
             registerUser(usuario);
-        }
+
         return register;
     }
 
     public LiveData<Pedido> getNuevoPedido(Pedido pedido) {
-        if (nuevoPedido == null) {
             nuevoPedido = new MutableLiveData<Pedido>();
             newPedido(pedido);
-        }
+
         return nuevoPedido;
     }
 
     public LiveData<Usuario> newPubsRegister (UsuarioSerilize usuario) {
-        if (register == null) {
+
             register = new MutableLiveData<Usuario>();
             registerPubsUser(usuario);
-        }
+
         return register;
     }
 
     public LiveData<Pedido> getNuevoPedidoSerilize(PedidoSerialize pedido) {
-        if (nuevoPedido == null) {
             nuevoPedido = new MutableLiveData<Pedido>();
             newPedidoSerialize(pedido);
-        }
+
         return nuevoPedido;
     }
 
     public LiveData<List<Producto>> getProductos(Tipo tipo, Rango rango) {
-        if (productos == null) {
+
             productos = new MutableLiveData<List<Producto>>();
             productosPorTipoYRango(tipo, rango);
-        }
+
         return productos;
     }
 
     public LiveData<List<Pedido>> getPedidos(String usuario) {
-        if (pedidos == null) {
             pedidos = new MutableLiveData<List<Pedido>>();
             pedidosDeUnUsuario(usuario);
-        }
+
         return pedidos;
     }
 
@@ -139,7 +134,21 @@ public class PollClient {
             public Producto[] deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
                 JsonArray obj = json.getAsJsonArray();
                 Gson g = new Gson();
+
                 Producto[] p = g.fromJson(obj, Producto[].class);
+
+                System.out.println(p );
+                return p;
+            }
+        }).registerTypeAdapter(Producto.class, new JsonDeserializer<Producto>() {
+            @Override
+            public Producto deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
+                JsonObject obj = json.getAsJsonObject();
+                Gson g = new Gson();
+
+                Producto p = g.fromJson(obj, Producto.class);
+                System.out.println(obj.toString() + "hola");
+                System.out.println(p + "hola");
                 return p;
             }
         }).registerTypeAdapter(Persona.class, new JsonDeserializer<Persona>() {
@@ -231,7 +240,7 @@ public class PollClient {
                     System.out.println(response.body().size() + "");
 
                 }else{
-                    System.out.println("is null");
+                    System.out.println("no hay productos");
                     //TODO: Poner Toast con mensaje de no hay productos
                 }
             }

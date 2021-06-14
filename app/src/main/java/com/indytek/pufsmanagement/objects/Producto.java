@@ -40,9 +40,10 @@ public class Producto {
     private int id;
     @SerializedName("name")
     private String nombre;
+
     //la imagen es una url para su busqueda
-    @SerializedName("url_product")
-    private String imagen;
+    @SerializedName("urlProducto")
+    private String url_product;
     @SerializedName("pc")
     private float precio;
     @SerializedName("pvp")

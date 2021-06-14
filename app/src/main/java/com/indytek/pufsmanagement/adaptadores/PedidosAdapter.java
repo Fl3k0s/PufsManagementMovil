@@ -92,6 +92,10 @@ public class PedidosAdapter extends RecyclerView.Adapter<PedidosAdapter.ViewHold
         notifyDataSetChanged();
     }
 
+    public void clearData(){
+        mPedidos.clear();
+    }
+
 
     // stores and recycles views as they are scrolled off screen
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {

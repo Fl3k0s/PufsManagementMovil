@@ -48,7 +48,7 @@ public class Pedido implements Serializable {
 	@SerializedName("notes")
 	private String notes;
 
-	@SerializedName("pay_method")
+	@SerializedName("payMethod")
 	private MetodoDePago payMethod;
 	//cambiado de productos a integer por que solo es necesario la id para luego mostrar la informacion con consultas
 	@Singular

@@ -49,7 +49,7 @@ public class CarritoAdapter extends RecyclerView.Adapter<CarritoAdapter.ViewHold
         holder.productoImg.setMaxWidth(50);
 
         //con esto lo que hacemos es poner en el ImageButton la ruta de la foto en internet
-        Glide.with(holder.productoImg.getContext()).load(prod.getImagen()).into(holder.productoImg);
+        Glide.with(holder.productoImg.getContext()).load(prod.getUrl_product()).into(holder.productoImg);
 
         //le ponemos el nombre del producto que corresponda
         holder.productoTxt.setText(prod.getNombre());

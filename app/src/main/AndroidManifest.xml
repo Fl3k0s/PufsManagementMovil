@@ -27,6 +27,9 @@
             android:name=".MainActivity"
             android:theme="@style/Theme.PufsManagement.NoActionBar" />
         <activity
+            android:name=".NewMainActivity"
+            android:theme="@style/Theme.PufsManagement.NoActionBar" />
+        <activity
             android:name=".Registro"
             android:theme="@style/Theme.PufsManagement.NoActionBar" />
         <activity

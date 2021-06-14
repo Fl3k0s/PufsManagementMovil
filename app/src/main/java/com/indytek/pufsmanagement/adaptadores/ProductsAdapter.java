@@ -48,12 +48,13 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHo
     public void onBindViewHolder(ViewHolder holder, int position) {
         Producto prod = mProductos.get(position);
 
+        System.out.println(prod);
         //establecemos el tamaño maximo de la imagen
         holder.productos.setMaxHeight(120);
         holder.productos.setMaxWidth(120);
 
         //con esto lo que hacemos es poner en el ImageButton la ruta de la foto en internet
-        Glide.with(holder.productos.getContext()).load(prod.getImagen()).into(holder.productos);
+        Glide.with(holder.productos.getContext()).load(generateUrl(prod.getUrl_product())).into(holder.productos);
 
         //le ponemos el nombre del producto que corresponda
         holder.txtProductos.setText(prod.getNombre());
@@ -61,7 +62,12 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHo
         holder.setOnClickListeners();
     }
 
-
+    public String generateUrl(String s){
+        String[] p=s.split("/");
+        String imageLink="https://drive.google.com/uc?export=download&id="+p[5];
+        System.out.println(imageLink);
+        return imageLink;
+    }
 
 
 
@@ -74,6 +80,10 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHo
     public void addData(List<Producto> info) {
         mProductos.addAll(info);
         notifyDataSetChanged();
+    }
+
+    public void clearData(){
+        mProductos.clear();
     }
 
 
