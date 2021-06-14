@@ -63,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //boton de hamburguesas
         findViewById(R.id.hamburguesas).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -70,6 +71,8 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(productos);
             }
         });
+
+        //boton de perritos
         findViewById(R.id.perritos).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -77,6 +80,8 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(productos);
             }
         });
+
+        //boton de raciones
         findViewById(R.id.raciones).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -84,6 +89,8 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(productos);
             }
         });
+
+        //boton de bebida
         findViewById(R.id.bebida).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

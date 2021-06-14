@@ -15,9 +15,6 @@
         <activity android:name=".VistaPreviaActivity"></activity>
         <activity android:name=".PagoActivity" />
         <activity
-            android:name=".BotonesActivity"
-            android:theme="@style/Theme.PufsManagement.NoActionBar" />
-        <activity
             android:name=".Pedidos"
             android:theme="@style/Theme.PufsManagement.NoActionBar" />
         <activity

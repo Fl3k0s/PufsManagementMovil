@@ -134,23 +134,7 @@ public class PollClient {
             public LocalDateTime deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
                 return LocalDateTime.parse(json.getAsString()); }
 
-        })/*
-        //FIXME: arreglar la serializacion con herencia para la siguiente versión
-        .registerTypeHierarchyAdapter(Producto[].class, new JsonSerializer<Producto[]>() {
-            @Override
-            public JsonElement serialize(Producto[] src, Type typeOfSrc, JsonSerializationContext context) {
-                JsonArray array = new JsonArray();
-                for (Producto behavior : src) {
-                    JsonObject behaviorJson = new JsonObject();
-                    String className = behavior.getClass().getCanonicalName();
-                    behaviorJson.addProperty("type", "products");
-                    JsonElement elem = context.serialize(behavior);
-                    behaviorJson.add("product", elem);
-                    array.add(behaviorJson);
-                }
-                return array;
-            }
-        })*/.registerTypeAdapter(Producto[].class, new JsonDeserializer<Producto[]>() {
+        }).registerTypeAdapter(Producto[].class, new JsonDeserializer<Producto[]>() {
             @Override
             public Producto[] deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
                 JsonArray obj = json.getAsJsonArray();
