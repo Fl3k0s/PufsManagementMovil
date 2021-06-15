@@ -6,12 +6,27 @@
     android:layout_height="match_parent"
     tools:context=".LogIn">
 
+    <CheckBox
+        android:id="@+id/checkBoxRemindUserPass"
+        style="@style/Widget.AppCompat.CompoundButton.CheckBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="Recordar"
+        android:textColor="#FF6464"
+        android:textColorHighlight="#FF6464"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editChange" />
+
     <TextView
         android:id="@+id/txtPayMethod"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:layout_marginEnd="250dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="40dp"
         android:fontFamily="sans-serif-condensed"
         android:shadowColor="#000000"
         android:shadowDx="0"
@@ -21,16 +36,15 @@
         android:textColor="#FF6464"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/Logo" />
 
     <EditText
         android:id="@+id/editTextPayMethod"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="150dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="20dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:textColor="#FF6464"
@@ -38,15 +52,14 @@
         android:textColorLink="#FF6464"
         android:textCursorDrawable="@android:drawable/ic_notification_overlay"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/Logo" />
 
     <TextView
         android:id="@+id/txtChange"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="250dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
         android:fontFamily="sans-serif-condensed"
         android:shadowColor="#000000"
         android:shadowDx="0"
@@ -56,8 +69,6 @@
         android:textColor="#FF6464"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtPayMethod" />
 
@@ -65,87 +76,48 @@
         android:id="@+id/editChange"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="150dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
         android:ems="10"
         android:inputType="textPassword"
         android:textColorHighlight="#FF6464"
         android:textColorLink="#FF6464"
         android:textCursorDrawable="@android:drawable/ic_notification_overlay"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextPayMethod" />
-
-    <CheckBox
-        android:id="@+id/checkBoxRemindUserPass"
-        style="@style/Widget.AppCompat.CompoundButton.CheckBox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:text="Recordar"
-        android:textColor="#FF6464"
-        android:textColorHighlight="#FF6464"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtChange" />
-
-    <Button
-        android:id="@+id/buttonLogin"
-        android:layout_width="160dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="200dp"
-        android:backgroundTint="#FF6464"
-        android:rotationX="10"
-        android:text="Iniciar Sesión"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkBoxRemindUserPass" />
 
     <Button
         android:id="@+id/buttonRegistrerOk"
         android:layout_width="160dp"
         android:layout_height="50dp"
-        android:layout_marginStart="200dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="20dp"
         android:backgroundTint="#FF6464"
         android:rotationX="10"
         android:text="Registrarse"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/checkBoxRemindUserPass" />
 
     <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="27dp"
-        android:layout_height="30dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.244"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/icon_nav" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Indytek Services 2021"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.077"
-        app:layout_constraintStart_toEndOf="@+id/imageView2" />
-
-    <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/Logo"
         android:layout_width="289dp"
         android:layout_height="162dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="80dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkBoxRemindUserPass"
-        app:layout_constraintVertical_bias="0.501"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/s_text_trans" />
+
+    <Button
+        android:id="@+id/buttonLogin"
+        android:layout_width="160dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="30dp"
+        android:backgroundTint="#FF6464"
+        android:rotationX="10"
+        android:text="Iniciar Sesión"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/checkBoxRemindUserPass" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
