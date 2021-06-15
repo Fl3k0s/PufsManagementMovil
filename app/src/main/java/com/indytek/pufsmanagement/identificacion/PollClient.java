@@ -2,6 +2,7 @@ package com.indytek.pufsmanagement.identificacion;
 
 import android.os.Build;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 import androidx.lifecycle.LiveData;
@@ -17,6 +18,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
+import com.indytek.pufsmanagement.LogIn;
 import com.indytek.pufsmanagement.PedidoSerialize;
 import com.indytek.pufsmanagement.objects.MetodoDePago;
 import com.indytek.pufsmanagement.objects.Pedido;
@@ -47,6 +49,8 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class PollClient {
+    public static String token = "";
+
     //llamadas a la api
     private MutableLiveData<Usuario> login;
     private MutableLiveData<Usuario> register;
@@ -324,11 +328,13 @@ public class PollClient {
         PollService service = getApiService();
         Call<Usuario> usuarios = service.pubsRegister2(u);
 
+
         usuarios.enqueue(new Callback<Usuario>() {
             @Override
             public void onResponse(Call<Usuario> call, Response<Usuario> response) {
                 if(response.body() != null){
                     register.setValue(response.body());
+                    token = response.body().getToken();
                 }else{
                     System.out.println("is null");
                     //TODO: Poner Toast con mensaje de bad register
@@ -370,6 +376,7 @@ public class PollClient {
 
         Call<Usuario> usuarios = service.pubsLogin(username, pass);
 
+
         try {
             JSONObject paramObject = new JSONObject();
 
@@ -380,6 +387,7 @@ public class PollClient {
                 public void onResponse(Call<Usuario> call, Response<Usuario> response) {
                     if (response.body() != null){
                         login.postValue(response.body());
+                        token = response.body().getToken();
                     }else{
                         //TODO: Poner Toast con mensaje de bad login
                     }

@@ -12,6 +12,7 @@ import com.indytek.pufsmanagement.objects.UsuarioSerilize;
 import java.util.ArrayList;
 import java.util.List;
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
@@ -52,6 +53,9 @@ public interface PollService {
     //TODO implementar en futura version
     @PUT("")
     public Call<Usuario> actualizarUsuario(@Body Usuario usuario);
+
+    @GET("")
+    public Call<ResponseBody> token(@Header("Autentification") String token);
 
     @PUT(Urls.CANCELPEDIDO)
     public Call<Pedido> cancelarPedido(@Query("user")String user, @Query("id") int id);

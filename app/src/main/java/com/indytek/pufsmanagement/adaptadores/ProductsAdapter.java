@@ -58,6 +58,9 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHo
 
         //le ponemos el nombre del producto que corresponda
         holder.txtProductos.setText(prod.getNombre());
+        holder.txtRango.setText(prod.getRango() +"");
+        holder.txtTipo.setText(prod.getTipo() +"");
+        holder.txtPrecio.setText(prod.getPrecio() + "€");
         holder.p = prod;
         holder.setOnClickListeners();
     }
@@ -90,7 +93,7 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHo
     // stores and recycles views as they are scrolled off screen
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         ImageButton productos;
-        TextView txtProductos;
+        TextView txtProductos, txtPrecio, txtRango, txtTipo;
         Context context;
         Producto p;
         ViewHolder(View itemView) {
@@ -98,6 +101,9 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHo
             context = itemView.getContext();
             productos = itemView.findViewById(R.id.imgProd);
             txtProductos = itemView.findViewById(R.id.txtProd);
+            txtPrecio = itemView.findViewById(R.id.txtPrecio);
+            txtTipo = itemView.findViewById(R.id.txtTipo);
+            txtRango = itemView.findViewById(R.id.txtRango);
         }
 
         void setOnClickListeners(){

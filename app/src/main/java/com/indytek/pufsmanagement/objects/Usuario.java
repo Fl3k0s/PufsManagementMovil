@@ -39,6 +39,9 @@ public class Usuario{
     @SerializedName("rango")
     private Rango rango;
 
+    @SerializedName("token")
+    private String token;
+
     //varios usuarios podran tener la misma direccion
     @SerializedName("direccion")
     private Direccion direccion;
