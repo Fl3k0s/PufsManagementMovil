@@ -12,7 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PufsManagement"
         android:usesCleartextTraffic="true">
-        <activity android:name=".VistaPreviaActivity"></activity>
+        <activity android:name=".HelpActivity"></activity>
+        <activity android:name=".VistaPreviaActivity" />
         <activity android:name=".PagoActivity" />
         <activity
             android:name=".Pedidos"

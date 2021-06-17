@@ -23,4 +23,10 @@
         android:label="@string/menu_slideshow"
         tools:layout="@layout/fragment_slideshow" />
 
+    <activity
+        android:id="@+id/nav_sobreNosotros"
+        android:name="com.indytek.pufsmanagement.HelpActivity"
+        android:label="@string/menu_slideshow"
+        tools:layout="@layout/fragment_slideshow" />
+
 </navigation>
