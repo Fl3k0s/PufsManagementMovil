@@ -49,7 +49,7 @@ public class CarritoAdapter extends RecyclerView.Adapter<CarritoAdapter.ViewHold
         holder.productoImg.setMaxWidth(50);
 
         //con esto lo que hacemos es poner en el ImageButton la ruta de la foto en internet
-        Glide.with(holder.productoImg.getContext()).load(prod.getUrl_product()).into(holder.productoImg);
+        Glide.with(holder.productoImg.getContext()).load(generateUrl(prod.getUrl_product())).into(holder.productoImg);
 
         //le ponemos el nombre del producto que corresponda
         holder.productoTxt.setText(prod.getNombre());
@@ -59,7 +59,15 @@ public class CarritoAdapter extends RecyclerView.Adapter<CarritoAdapter.ViewHold
         //TODO habilitar el onClick cuando pongamos el boton de descartar
         //holder.setOnClickListeners();
     }
+    public String generateUrl(String s){
 
+        if (s.equals(""))
+            return "";
+        String[] p=s.split("/");
+        String imageLink="https://drive.google.com/uc?export=download&id="+p[5];
+        System.out.println(imageLink);
+        return imageLink;
+    }
 
 
 

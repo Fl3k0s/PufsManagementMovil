@@ -88,15 +88,38 @@ public class Registro extends AppCompatActivity {
                             .orders(new ArrayList<>())
                             .person(persona)
                             .build();
-                    System.out.println(u1);
+
+                    //Le mostramos el error de base de datos al usuario
+                    if(calle.getText().toString().length() > 30){
+                        Toast.makeText(getApplicationContext(),
+                                "Registro fallido. La calle es muy larga", Toast.LENGTH_SHORT).show();
+                    }
+
+                    if (numero.getText().toString().length() > 10){
+                        Toast.makeText(getApplicationContext(),
+                                "Registro fallido. El numero es muy largo", Toast.LENGTH_SHORT).show();
+                    }
+
+                    if(portal.getText().toString().length() > 5){
+                        Toast.makeText(getApplicationContext(),
+                                "Registro fallido. El portal es muy largo", Toast.LENGTH_SHORT).show();
+                    }
+
+                    if(puerta.getText().toString().length() > 5){
+                        Toast.makeText(getApplicationContext(),
+                                "Registro fallido. La es muy larga", Toast.LENGTH_SHORT).show();
+                    }
+
                     registro(u1);
                 }else {
                     Toast toast1 =
                             Toast.makeText(getApplicationContext(),
-                                    "Contraseña incorrecta", Toast.LENGTH_SHORT);
+                                    "Registro fallido. Las contraseñas no coinciden", Toast.LENGTH_SHORT);
 
                     toast1.show();
                 }
+
+
 
 
             }

@@ -66,6 +66,9 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHo
     }
 
     public String generateUrl(String s){
+
+        if (s.equals(""))
+            return "";
         String[] p=s.split("/");
         String imageLink="https://drive.google.com/uc?export=download&id="+p[5];
         System.out.println(imageLink);

@@ -15,9 +15,6 @@ import java.util.Set;
 @ToString
 @Getter
 @Setter
-
-
-
 /*
 Clase de usuario
  */

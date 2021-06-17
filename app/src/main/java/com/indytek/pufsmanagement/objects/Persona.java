@@ -30,7 +30,7 @@ public class Persona implements Serializable {
 	@SerializedName("name")
 	private String name;
 
-	@SerializedName("secondname1")
+	@SerializedName("secondName1")
 	private String secondName1;
 
 	@SerializedName("secondname2")
